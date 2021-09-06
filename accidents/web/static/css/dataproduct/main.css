@@ -1,0 +1,281 @@
+/******************************************************
+**************- Import Fonts From Assets -*************
+******************************************************/
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url(../../assets/fonts/Poppins/Poppins-Bold.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Poppins-Light;
+    src: url(../../assets/fonts/Poppins/Poppins-Light.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url(../../assets/fonts/Poppins/Poppins-Medium.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url(../../assets/fonts/Poppins/Poppins-SemiBold.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Monserrat-Bold;
+    src: url(../../assets/fonts/Monserrat/Montserrat-Bold.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Monserrat-Medium;
+    src: url(../../assets/fonts/Monserrat/Montserrat-Medium.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Monserrat-Light;
+    src: url(../../assets/fonts/Monserrat/Montserrat-Light.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+/******************************************************
+*****************- Generics Styles -*******************
+******************************************************/
+
+.flex-row{
+    display: flex;
+    clear: both;
+    align-items: center;
+}
+
+.column2{
+    width: 50%;
+    float: left;
+    display: inline;
+}
+
+.light{
+    font-family: Poppins-Light;
+}
+
+.medium{
+    font-family: Poppins-Medium;
+}
+
+.bold{
+    font-family: Poppins-Bold;
+}
+
+.container-body{
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/******************************************************
+*****************- Navbar Styles -*******************
+******************************************************/
+
+.navbar{
+    background-color: #FFFFFF;
+    height: 44px;
+    /* padding: 8px; */
+    border-radius: 0px 0px 15px 15px;
+}
+
+.container-title{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.container-options{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.point-title{
+    background-color: #CD113B;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.text-title{
+    color: #000000;
+    font-size: 25px;
+}
+
+.option{
+    color: #FB0404;
+    font-size: 15px;
+    font-family: Monserrat-Medium;
+    text-decoration: none;
+    margin-right: 25px;
+}
+
+/******************************************************
+*****************- Banner Styles -*******************
+******************************************************/
+
+.banner{
+    background-color: #F6F6F6;
+    height: 440px;
+    /* width: 95%;
+    margin-left: 2.5%; */
+}
+
+.container-banner-txt{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.banner-txt{
+    font-family: Poppins-SemiBold;
+    font-size: 40px;
+    align-self: center;
+}
+
+.conatiner-banner-img{
+    margin: 1px;
+    display: flex;
+    justify-content: end;
+}
+
+.banner-img{
+    margin: 1px;
+    height: 425px;
+}
+
+/******************************************************
+*******************- Info Styles -*********************
+******************************************************/
+
+.container-info{
+   background-color: #FECE6F;
+   height: auto;
+}
+
+.container-info-title{
+    justify-content: center;
+}
+
+.info-title{
+    color: #CD113B;
+    font-family: Poppins-Medium;
+    font-size: 30px;
+    text-align: center;
+    margin: 0px;
+    padding-top: 10px;
+}
+
+.container-info-answer{
+    padding: 35px;
+}
+
+.info-answer{
+    color: #121212;
+    font-family: Monserrat-Medium;
+    font-size: 17px;
+    text-align: justify;
+    margin: 0px
+}
+
+/******************************************************
+******************- Inputs Styles -********************
+******************************************************/
+
+.container-inputs{
+    background-color: #F6F6F6;
+    height: auto;
+    padding: 40px;
+}
+
+.card{
+    background-color: #FFFFFF;
+    height: auto;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.card-title{
+    font-family: Poppins-Medium;
+    color: #000000;
+    font-size: 24px;
+    text-align: left;
+}
+
+.card-subtitle{
+    font-family: Poppins-Light;
+    color: #C3BCBC;
+    font-size: 16px;
+    text-align: left;
+}
+
+.title-card{
+    margin: 0px;
+}
+
+.subtitle-card{
+    margin: 0px;
+}
+
+.card-inputs{
+    margin-top: 20px;
+    margin-left: 47px;
+}
+
+.container-input{
+    /* margin-left: 10px; */
+    width: fit-content;
+    justify-content: center;
+}
+
+.input-label{
+    background-color: #F3F2F2;
+    font-family: Monserrat-Medium;
+    height: 23px;
+    width: 200px;
+    padding: 3px 7px 3px 7px ;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    margin-right: 25px;
+}
+
+.btn-save{
+    text-decoration: none;
+    background-color: #FF7600;
+    color: #ffffff;
+    border-radius: 8px;
+    width: 200px;
+    height: 27px;
+    border: 1px;
+    font-family: Monserrat-Medium;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 1px 6px 1px 6px ;
+}
+
+/******************************************************
+*****************- Footer Styles -*******************
+******************************************************/
+
+.footer{
+    background-color: #FF9438;
+    /* border-radius: 15px 15px 0px 0px; */
+    height: 30px;
+    /*box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.15 );*/
+    text-align: center;
+}
+
+.footer-text{
+    font-size: 16px;
+    color: #ffffff;
+    padding: 5px 0px 0px 0px;
+}
+
+.footer-text bold{
+    font-style: bold;
+}
+

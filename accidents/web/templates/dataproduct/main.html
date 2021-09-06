@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Producto de Datos</title>
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/dataproduct/main.css' ) }}">
+</head>
+
+<body>
+    <div class="header">
+        <div class="flex-row navbar">
+            <div class="column2 container-title">
+                <div class="point-title"></div>
+                <a class="text-title medium">Matsen</a>
+            </div>
+            <div class="column2 container-options">
+                <a class="option" href="/dataproduct/"> Inicio</a>
+                <a class="option" href="/dataproduct/"> Valoración</a>
+                <a class="option" href="/dataproduct/"> Resultados</a>
+            </div>
+        </div>
+        <div class="flex-row banner">
+            <div class="column2 container-banner-txt">
+                <p class="banner-txt">Predicción Gravedad Accidentes <br>
+                    en Bogota</p>
+            </div>
+            <div class="column2 conatiner-banner-img">
+                <img class="banner-img"
+                    src="{{ url_for( 'static', filename='/assets/img/dataproduct/undraw_off_road_9oae.svg' ) }}" alt=""
+                    srcset="">
+            </div>
+        </div>
+    </div>
+    <div class="container-body">
+        <div class="container-info">
+            <div class="container-info-title">
+                <p class="info-title">¿Que hace este producto de datos?</p>
+            </div>
+            <div class="container-info-answer">
+                <p class="info-answer">Actualmente en el sector de transporte existen los siniestros viales los cuales
+                    ocurren con alta frecuencia y todos sus datos y características determinan las causas y la gravedad
+                    de daños que ocurrieron, por medio de los análisis tradicionales se determinan estos valores, siendo
+                    estos analizados con tiempos largos de procesamiento y limitados por la naturaleza, ahora en día
+                    existen disciplinas como la ciencia de datos que permiten realizar análisis, estimaciones,
+                    predicciones y descubrimientos, ofreciendo mayores beneficios para el sector transporte y su toma de
+                    decisiones.(Plan Movilidad, Bogota).</p>
+            </div>
+        </div>
+        <div class="container-inputs">
+            <div class="card">
+                <div class="card-titles">
+                    <div class="card-title">
+                        <p class="title-card">Predicción de la gravedad de un siniestro vial</p>
+                    </div>
+                    <div class="card-subtitle">
+                        <p class="subtitle-card">
+                            Ingresa los valores para predecir un siniestros vial
+                        </p>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    <div class="card-inputs">
+                        <div class="flex-row container-input">
+                            <!-- <label class="input-label" placeholder="Clase Vehiculo">Clase Vehiculo</label> -->
+                            <input class="input-label" id="dia_procesado" name="dia_procesado" type="text" placeholder="Dia Procesada">
+                            <input class="input-label" id="edad_procesada" name="edad_procesada" type="text" placeholder="Edad Procesada">
+                            <input class="input-label" id="lleva_cinturon" name="lleva_cinturon" type="text" placeholder="Lleva Cinturón">
+                            <input class="input-label" id="lleva_chaleco" name="lleva_chaleco" type="text" placeholder="Lleva Chaleco">
+                            <input class="input-label" id="lleva_casco" name="lleva_casco" type="text" placeholder="Lleva Casco">
+                        </div>
+                    </div>
+                    <div class="card-inputs">
+                        <div class="flex-row container-input">
+                            <input class="input-label" id="sexo" name="sexo" type="text" placeholder="Sexo">
+                            <input class="input-label" id="modelo_vehiculo" name="modelo_vehiculo" type="text" placeholder="Modelo Vehiculo">
+                            <input class="input-label" id="clase_vehiculo" name="clase_vehiculo" type="text" placeholder="Clase Vehiculo">
+                            <input class="input-label" id="soat" name="soat" type="text" placeholder="Tiene Soat">
+                            <input class="input-label" id="embriaguez" name="embriaguez" type="text" placeholder="Tiene Embiraguez">
+                        </div>
+                    </div>
+                    <div class="card-inputs">
+                        <div class="flex-row container-input">
+                            <input class="input-label" id="localidad" name="localidad" type="text" placeholder="Localidad">
+                            <input class="input-label" id="hora_procesada" name="hora_procesada" type="text" placeholder="Hora">
+                            <input class="input-label" id="mes" name="mes" type="text" placeholder="Mes">
+                            <input class="btn-save" type="submit" value="Probar!" onclick="console.log('Funciona')">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <p>Aqui va el container</p>
+        <div>
+            <div>
+                <p>Aqui iran los graficos</p>               
+            </div>
+            {% if result %}
+                <div>
+                    <p>La gravedad del accidente seria: Accidente <strong>{{result}}</strong></p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="footer container-body">
+        <p class="footer-text light">Powered By <span class="footer-text bold">Matsen</span> (Mateo Velez - Santiago
+            Leon)</p>
+    </div>
+</body>
+
+</html>
