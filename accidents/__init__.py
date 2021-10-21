@@ -1,10 +1,16 @@
 import os
 
 from flask import Flask
+from .dataproduct import dataproduct
 
 
 def create_app(test_config=None):
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__,
+                instance_relative_config=True,
+                static_folder='./web/static',
+                template_folder='./web/templates'
+                #,static_url_path='/web/static'
+                )
 
     if test_config is None:
         app.config.from_pyfile('config.py',silent=True)
@@ -17,8 +23,12 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/hello')
+    with app.app_context():
+        pass
+
+    @app.route('/')
     def hello():
         return 'Hello, World!'
 
+    app.register_blueprint(dataproduct.dtproductbp)
     return app

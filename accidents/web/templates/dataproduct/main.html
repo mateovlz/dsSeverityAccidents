@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Siniestros Viales</title>
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/dataproduct/main.css' ) }}">
+</head>
+
+<body>
+    <div class="header">
+        <div class="flex-row navbar">
+            <div class="col50 container-title">
+                <div class="point-title"></div>
+                <a class="text-title medium">Matsen</a>
+            </div>
+            <div class="col50 container-options">
+                <a class="option" href="/dataproduct/"> Inicio</a>
+                <a class="option" href="/dataproduct/"> Valoración</a>
+                <a class="option" href="/dataproduct/"> Resultados</a>
+            </div>
+        </div>
+        <div class="flex-row banner">
+            <div class="col50 container-banner-txt">
+                <p class="banner-txt">Predicción Gravedad Accidentes <br>
+                    en Bogota</p>
+            </div>
+            <div class="col50 conatiner-banner-img">
+                <img class="banner-img"
+                    src="{{ url_for( 'static', filename='/assets/img/dataproduct/undraw_off_road_9oae.svg' ) }}" alt=""
+                    srcset="">
+            </div>
+        </div>
+    </div>
+    <div class="container-body">
+        <div class="container-info">
+            <div class="container-info-title">
+                <p class="info-title">¿Que hace este producto de datos?</p>
+            </div>
+            <div class="container-info-answer">
+                <p class="info-answer">Actualmente en el sector de transporte existen los siniestros viales los cuales
+                    ocurren con alta frecuencia y todos sus datos y características determinan las causas y la gravedad
+                    de daños que ocurrieron, por medio de los análisis tradicionales se determinan estos valores, siendo
+                    estos analizados con tiempos largos de procesamiento y limitados por la naturaleza, ahora en día
+                    existen disciplinas como la ciencia de datos que permiten realizar análisis, estimaciones,
+                    predicciones y descubrimientos, ofreciendo mayores beneficios para el sector transporte y su toma de
+                    decisiones.(Plan Movilidad, Bogota).</p>
+            </div>
+        </div>
+        <div class="container-inputs">
+            <div class="card">
+                <div class="card-titles">
+                    <div class="card-title">
+                        <p class="title-card">Predicción de la gravedad de un siniestro vial</p>
+                    </div>
+                    <div class="card-subtitle">
+                        <p class="subtitle-card">
+                            Ingresa los valores para predecir un siniestros vial
+                        </p>
+                    </div>
+                </div>
+                <form action="" method="POST">
+                    <div class="card-inputs">
+                        <div class="flex-row container-input">
+                            <div class="tooltip">
+                                <input class="input-label" id="dia_procesado" name="dia_procesado" type="text" placeholder="Dia Procesada">
+                                <span class="tooltip-text">Dia Procesada</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="edad_procesada" name="edad_procesada" type="text" placeholder="Edad Procesada">
+                                <span class="tooltip-text">Edad Procesada</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="lleva_cinturon" name="lleva_cinturon" type="text" placeholder="Lleva Cinturón">
+                                <span class="tooltip-text">Lleva Cinturon</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="lleva_chaleco" name="lleva_chaleco" type="text" placeholder="Lleva Chaleco">
+                                <span class="tooltip-text">Lleva Chaleco</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="lleva_casco" name="lleva_casco" type="text" placeholder="Lleva Casco">
+                                <span class="tooltip-text">Lleva Casco</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-inputs">
+                        <div class="flex-row container-input">
+                            <div class="tooltip">
+                                <input class="input-label" id="sexo" name="sexo" type="text" placeholder="Sexo">
+                                <span class="tooltip-text">Sexo</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="modelo_vehiculo" name="modelo_vehiculo" type="text" placeholder="Modelo Vehiculo">
+                                <span class="tooltip-text">Modelo Vehiculo</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="clase_vehiculo" name="clase_vehiculo" type="text" placeholder="Clase Vehiculo">
+                                <span class="tooltip-text">Clase Vehiculo</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="soat" name="soat" type="text" placeholder="Tiene Soat">
+                                <span class="tooltip-text">Tiene Soat</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="embriaguez" name="embriaguez" type="text" placeholder="Tiene Embiraguez">
+                                <span class="tooltip-text">Tiene Embriaguez</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-inputs">
+                        <div class="flex-row container-input">
+                            <div class="tooltip">
+                                <input class="input-label" id="localidad" name="localidad" type="text" placeholder="Localidad">
+                                <span class="tooltip-text">Localidad</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="hora_procesada" name="hora_procesada" type="text" placeholder="Hora">
+                                <span class="tooltip-text">Hora</span>
+                            </div>
+                            <div class="tooltip">
+                                <input class="input-label" id="mes" name="mes" type="text" placeholder="Mes">
+                                <span class="tooltip-text">Mes</span>
+                            </div>
+                            <div class="tooltip">
+                                <label class="input-label" for="">Prueba</label>
+                                <select class="input-label" name="prueba" id="prueba" placeholder="Prueba">
+                                    <option value="1">Prueba</option>
+                                    <option value="1">Si</option>
+                                    <option value="2">No</option>
+                                </select>
+                                <span class="tooltip-text">Prueba</span>
+                            </div>
+                            <input class="btn-save" type="submit" value="Probar!" onclick="console.log('Funciona')">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        {% if result %}
+        <div class="container-prediction">
+            <div class="card">
+                <div class="card-titles">
+                    <div class="card-title">
+                        <p class="title-card">Resultados análisis y predicción:</p>
+                    </div>
+                    <div class="card-subtitle">
+                        <p class="subtitle-card">
+                            Estos son los resultados generados a partir del procesamiento:
+                        </p>
+                    </div>
+                </div>
+                <div class="flex-row container-result">
+                    <div class="col30">
+                        <div class="container-text-results">
+                            <p class="text-result">Gravedad del <br> siniestro vial con <br> {{result}}</p>
+                        </div>
+                    </div>
+                    <div class="col70 text-details-result">
+                        <p><strong>Explicación:</strong> La explicación es sencilla esto funciona porque lo desarrollo el mejor wey. </p>
+                    </div>
+                </div>
+                <div class="card-titles">
+                    <div class="card-title">
+                        <p class="title-card">Resultados graficos:</p>
+                    </div>
+                    <div class="card-subtitle">
+                        <p class="subtitle-card">
+                            Estos son los graficos generados en el procesamiento:
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <img class="images" src="{{ url_for( 'static', filename='/assets/img/dataproduct/AgeByPeople.png' ) }}" alt="" srcset="">
+                        <img class="images" src="{{ url_for( 'static', filename='/assets/img/dataproduct/ByHourDaily.png' ) }}" alt="" srcset="">
+                        <img class="images" src="{{ url_for( 'static', filename='/assets/img/dataproduct/ByMonthEachYear.png' ) }}" alt="" srcset="">
+                    </div>
+                </div>               
+            </div>        
+        </div>
+        <div id="popup">
+            <img src="" alt="" id="selected-img">
+        </div>
+        {% endif %}
+    </div>
+    <div class="footer container-body">
+        <p class="footer-text light">Powered By <span class="footer-text bold">Matsen</span> (Mateo Velez - Santiago
+            Leon)</p>
+    </div>
+</body>
+<script src="{{ url_for( 'static', filename='/js/dataproduct/main.js' ) }}"></script>
+
+</html>
