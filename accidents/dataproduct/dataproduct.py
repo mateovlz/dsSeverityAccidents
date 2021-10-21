@@ -34,14 +34,17 @@ def index_dp():
             localidad, hora_procesada, mes
         ]
         # Get absolute path to use model pickle file
-        url = os.path.join(current_app.root_path) + '/dataproduct/'
-        result = ml.get_prediction(vars,'clf', url) if edadprocesada else None
+        url = os.path.join(current_app.root_path)
+        ml.start_grphing(url)
+        result = ml.get_prediction(vars,'clf', url + '/dataproduct/ml/') if edadprocesada else None
         severits = {
-            1: 'Daños',
-            2: 'Heridos',
-            3: 'Muertos'
+            1: 'Ilesos',
+            2: 'Herido Valorado',
+            3: 'Herido Hospitalizaco ',
+            4: 'Muerto'
         }
+        
         severity = severits.get(result,'No existe')
-        #result = ml.get_prediction(vars,'clf', url)
+        
         return render_template('main.html', result=severity)
     return render_template('main.html')

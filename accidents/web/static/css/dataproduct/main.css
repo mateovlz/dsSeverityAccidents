@@ -47,9 +47,34 @@
     align-items: center;
 }
 
-.column2{
+.col20{
+    width: 20%;
+    display: inline;
+}
+
+.col30{
+    width: 30%;
+    display: inline;
+}
+
+.col40{
+    width: 40%;
+    display: inline;
+}
+
+.col50{
     width: 50%;
     float: left;
+    display: inline;
+}
+
+.col70{
+    width: 70%;
+    display: inline;
+}
+
+.col80{
+    width: 80%;
     display: inline;
 }
 
@@ -279,3 +304,108 @@
     font-style: bold;
 }
 
+/******************************************************
+*****************- Images Styles -*******************
+******************************************************/
+
+.images{
+    /* height: 200px; */
+    width: 400px;
+}
+
+.images:hover{
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+#popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 118, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: 250ms transform;
+    padding: 100px;
+}
+
+#selected-img{
+    max-height: 80%;
+}
+
+/******************************************************
+*****************-   Results Zone  -*******************
+******************************************************/
+
+.container-prediction{
+    /*width: fit-content;*/
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    /*justify-content: center;*/
+    background-color: #F6F6F6;
+}
+
+.container-result{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    height: auto;
+}
+
+.container-text-results{
+    width: 300px;
+    height: auto;
+    background: #FF9438;
+    border-radius: 15px;
+}
+
+.text-result{
+    font-family: Poppins-Bold;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-details-result{
+    font-family: Monserrat-Medium;
+    font-size: 15px;
+    color: #000000;
+    text-align: start;
+    vertical-align: middle;
+}
+
+/******************************************************
+****************-   Tooltip Styles  -******************
+******************************************************/
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    background-color: rgba(255, 118, 0, 0.65);
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+
+    position: absolute;
+    z-index: 1;
+    margin-left: -11%;
+    margin-top: 35px;
+
+    font-family: Poppins-Light;
+    font-size: 14px;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+    
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
