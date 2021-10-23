@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{ url_for( 'static', filename='/assets/img/iseverity/ico.png' ) }}">
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/main.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/ayuda.css' ) }}">
+    {% block head %}{% endblock %}
+    {% if titleHead %}
+        <title>{{titleHead}}</title>
+    {% else %}
+        <title>ISeverity</title>
+    {% endif %}
+</head>
+<body>
+    <div class="container-main">
+        <div class="container-menu-list">
+            <nav id="container-menu" class="container-menu">
+                <div class="container-menu-exit">
+                    <p class="menu-exit">X</p>
+                </div>
+                <ul>
+                    <li class="option-list"><a class="menu-option option" href="/ISeverity/">Inicio</a></li>
+                    <li class="option-list"><a class="menu-option option" href="/ISeverity/dashboards">Dashboards</a></li>
+                    <ul>
+                        <li class="option-list menu-option">Siniestros Viales</a></li>
+                        <ul>
+                            <li class="option-list"><a class="menu-option option" href="/ISeverity/dashboards/seguridad">Elementos de Seguridad</a></li>
+                            <li class="option-list"><a class="menu-option option" href="/ISeverity/dashboards/gravedad">Gravedad</a></li>
+                            <li class="option-list"><a class="menu-option option" href="/ISeverity/dashboards/localidades">Localidades</a></li>
+                            <li class="option-list"><a class="menu-option option" href="/ISeverity/dashboards/tipohorario">Tipo Horario</a></li>
+                            <li class="option-list"><a class="menu-option option" href="/ISeverity/dashboards/tipovehiculo">Tipo Vehiculo</a></li>
+                            <li class="option-list"><a class="menu-option option" href="/ISeverity/dashboards/responsabilidad">Responsabilidad Social</a></li>
+                        </ul>
+                    </ul>
+                    <li class="option-list menu-option">Configuración</li>
+                    <ul>
+                        <li class="option-list menu-option">Administración</li>
+                        <ul>
+                            <li class="option-list"><a class="menu-option option" href="/ISeverity/conf-admin/fuentes">Fuentes</a></li>
+                            <li class="option-list"><a class="menu-option option" href="/ISeverity/conf-admin/ejecucionprocesos">Ejecución de Procesos</a></li>
+                            <li class="option-list"><a class="menu-option option" href="/ISeverity/conf-admin/historialuso">Historial de Uso</a></li>
+                        </ul>
+                    </ul>
+                    <li class="option-list"><a class="menu-option option" href="/ISeverity/ayuda">Ayuda</a></li>
+                    <li class="option-list"><a class="menu-option option" href="/ISeverity/contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container-menu-completed"></div>
+        <div class="flex-row container-logo">
+            <div class="col10">
+                <img id="menu" class="menu-drawer" src="{{ url_for( 'static', filename='/assets/img/iseverity/drawer.png' ) }}" alt="" srcset="">
+            </div>
+            <div class="col90">
+                <div class="container-logo-img">
+                    <img src="{{ url_for( 'static', filename='/assets/img/iseverity/ico_iseverity.png' ) }}" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+        {% if linkInicio %}
+        <div class="container-link">
+            <a class="inicio-link" href="/ISeverity/">< Inicio</a>
+        </div>
+        {% endif %}
+
+        {% if titlePage %}
+        <div class="container-title-page">
+            <p class="title-page">{{ titlePage }}</p>
+        </div>
+        {% endif %}
+        <div class="content-page">
+            {% block content %}{% endblock %}
+        </div>
+        {% if footer %}
+        <div class="footer">
+            <p class="footer-text light">Powered By <span class="footer-text bold">ISeverity</span> (Mateo Velez - Santiago
+                Leon)</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+<script src="{{ url_for( 'static', filename='/js/iseverity/menu.js' ) }}"></script>
+</html>
