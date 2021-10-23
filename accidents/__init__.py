@@ -2,7 +2,7 @@ import os
 
 from flask import Flask
 from .dataproduct import dataproduct
-
+from .iseverity import iseverity
 
 def create_app(test_config=None):
     app = Flask(__name__,
@@ -31,4 +31,5 @@ def create_app(test_config=None):
         return 'Hello, World!'
 
     app.register_blueprint(dataproduct.dtproductbp)
+    app.register_blueprint(iseverity.iseverityBp)
     return app

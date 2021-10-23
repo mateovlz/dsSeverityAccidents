@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{ url_for( 'static', filename='/assets/img/iseverity/ico.png' ) }}">
+    <title>Inicio</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/main.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/inicio/inicio.css' ) }}">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container-main">
+        <div class="header">
+            <div class="flex-row navbar">
+               <div class="col10">
+                    <img 
+                    src="{{ url_for( 'static', filename='/assets/img/iseverity/drawer.png' ) }}" alt=""
+                    srcset="">
+               </div>
+               <div class="col90">
+                    <img class="ico-img"
+                    src="{{ url_for( 'static', filename='/assets/img/iseverity/ico_iseverity.png' ) }}" alt=""
+                    srcset="">
+               </div>
+            </div>
+        </div>
+       <div  class="col70">
+            <div class="flex-row banner-inicio">
+               
+                <div class="col40 container-banner-txt">
+                    <p class="inicio-banner-title-txt">Todos los análisis de los siniestros viales de Bogotá en un solo lugar.</p>
+                </div>
+                <div class="col30 conatiner-banner-img">
+                    <img class="inicio-banner-img"
+                    src="{{ url_for( 'static', filename='/assets/img/dataproduct/undraw_off_road_9oae.svg' ) }}" alt=""
+                    srcset="">
+                </div>
+            </div>
+       </div>
+       <div class="flex-row">
+            <div  class="col70 container-banner-txt">
+                <div class="container-description-inicio">
+                    <div class="container-title-inicio">
+                       <center> <p class="inicio-banner-txt-title">¿Que es ISeverity?</p></center>
+                    </div>
+                    <p class="inicio-banner-txt-description">Con Iseverity puedes estudiar y predecir la gravedad de un siniestro vial, mediante un producto de datos fue entrenado con los registros de siniestros viales que han ocurrido  entre los años 2017 al 2019, para generar resultados el usuario deberá ingresar una combinación para ejecutar el proceso de análisis y gravedad. Generando una predicción de la gravedad  y  gráficas para un libre interpretación.</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex-row inicio-contianer-icolink" >
+            <div class="inicio-contianer-icolink">
+                <img class="ico-link" 
+                src="{{ url_for( 'static', filename='/assets/img/iseverity/github.png' ) }}" alt=""
+                srcset="">
+            </div>
+            <div class="inicio-contianer-icolink">
+                <img class="ico-link" 
+                src="{{ url_for( 'static', filename='/assets/img/iseverity/linkedin.png' ) }}" alt=""
+                srcset="">
+           </div>
+        </div>
+        <div class="footer">
+            <p class="footer-text light">Powered By <span class="footer-text bold">ISeverity</span> (Mateo Velez - Santiago
+                Leon)</p>
+        </div>
+    </div>
+</body>
+
+</html>
