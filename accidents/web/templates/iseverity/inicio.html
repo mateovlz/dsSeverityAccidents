@@ -1,32 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="{{ url_for( 'static', filename='/assets/img/iseverity/ico.png' ) }}">
-    <title>Inicio</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/main.css' ) }}">
+{% extends "base.html" %}
+{% block head %}
     <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/inicio/inicio.css' ) }}">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <div class="container-main">
-        <div class="header">
-            <div class="flex-row navbar">
-               <div class="col10">
-                    <img 
-                    src="{{ url_for( 'static', filename='/assets/img/iseverity/drawer.png' ) }}" alt=""
-                    srcset="">
-               </div>
-               <div class="col90">
-                    <img class="ico-img"
-                    src="{{ url_for( 'static', filename='/assets/img/iseverity/ico_iseverity.png' ) }}" alt=""
-                    srcset="">
-               </div>
-            </div>
-        </div>
-       <div  class="col70">
+{% endblock %}
+{% block content %}
+    <div>
+        <div  class="col70">
             <div class="flex-row banner-inicio">
                
                 <div class="col40 container-banner-txt">
@@ -61,11 +39,5 @@
                 srcset="">
            </div>
         </div>
-        <div class="footer">
-            <p class="footer-text light">Powered By <span class="footer-text bold">ISeverity</span> (Mateo Velez - Santiago
-                Leon)</p>
-        </div>
     </div>
-</body>
-
-</html>
+{% endblock %}
