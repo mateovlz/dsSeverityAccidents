@@ -1,8 +1,12 @@
 from flask import Blueprint, render_template
-
+from .iseveritydata import (
+     get_dashboard_seguridad_data, get_dashboard_gravedad_data, get_dashboard_localidades_data, get_dashboard_tipo_horario_data, 
+     get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data
+)
 iseverityBp = Blueprint(
     'iseverity', __name__, url_prefix='/ISeverity', template_folder='../web/templates/iseverity',
 )
+
 DASHBOARDS_LABEL = "Siniestros Viales por "
 
 @iseverityBp.route("/")
@@ -23,27 +27,63 @@ def dashboards():
 
 @iseverityBp.route("/dashboards/seguridad")
 def dashboard_seguridad():
-     return render_template("base.html", linkInicio="True", titleHead="Seguridad", titlePage=DASHBOARDS_LABEL+"Tipo de Elementos de Seguridad", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Seguridad"
+     titlePage=DASHBOARDS_LABEL+"Tipo de Elementos de Seguridad"
+     # Get the data for the graphs of the dashboard
+     graficos, warningDescription = get_dashboard_seguridad_data()
+     return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/dashboards/gravedad")
 def dashboard_gravedad():
-     return render_template("base.html", linkInicio="True", titleHead="Gravedad", titlePage=DASHBOARDS_LABEL+"Gravedad", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Gravedad"
+     titlePage=DASHBOARDS_LABEL+"Gravedad"
+     # Get the data for the graphs of the dashboard
+     graficos, warningDescription = get_dashboard_gravedad_data()
+     return render_template("dashboard.html", prediction=False, warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/dashboards/localidades")
 def dashboard_localidades():
-     return render_template("base.html", linkInicio="True", titleHead="Localidades", titlePage=DASHBOARDS_LABEL+"Localidades", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Localidades"
+     titlePage=DASHBOARDS_LABEL+"Localidades"
+     # Get the data for the graphs of the dashboard
+     graficos, warningDescription = get_dashboard_localidades_data()
+     return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/dashboards/tipohorario")
 def dashboard_tipo_horario():
-     return render_template("base.html", linkInicio="True", titleHead="Tipo Horario", titlePage=DASHBOARDS_LABEL+"Tipo de Horario", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Tipo de Horario"
+     titlePage=DASHBOARDS_LABEL+"Tipo de Horario"
+     # Get the data for the graphs of the dashboard
+     graficos, warningDescription = get_dashboard_tipo_horario_data()
+     return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/dashboards/tipovehiculo")
 def dashboard_tipo_vehiculo():
-     return render_template("base.html", linkInicio="True", titleHead="Tipo Vehiculo", titlePage=DASHBOARDS_LABEL+"Tipo de Vehiculo", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Tipo de Vehiculo"
+     titlePage=DASHBOARDS_LABEL+"Tipo de Vehiculo"
+     # Get the data for the graphs of the dashboard
+     graficos, warningDescription = get_dashboard_tipo_vehiculo_data()
+     return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
      
 @iseverityBp.route("/dashboards/responsabilidad")
 def dashboard_responsabilidad():
-     return render_template("base.html", linkInicio="True", titleHead="Responsabilidad", titlePage=DASHBOARDS_LABEL+"Tipo de Reponsabilidad Social", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Responsabilidad"
+     titlePage=DASHBOARDS_LABEL+"Tipo de Reponsabilidad Social"
+     # Get the data for the graphs of the dashboard
+     graficos, warningDescription = get_dashboard_responsabilidad_data()
+     return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/conf-admin/fuentes")
 def conf_admin_fuentes():
