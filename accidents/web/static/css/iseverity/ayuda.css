@@ -1,0 +1,116 @@
+/******************************************************
+*****************- Generics Styles -*******************
+******************************************************/
+
+.col10{
+    width: 10%;
+    display: inline;
+}
+
+.col90{
+    width: 90%;
+    display: inline;
+}
+
+.container-main{
+    width: 1218px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    padding: 0px 32px 0px 32px;
+}
+
+/******************************************************
+*******************- Logo Styles -*********************
+******************************************************/
+
+.container-logo-img{
+    margin-left: 374px;
+}
+
+/******************************************************
+*******************- Link Styles -*********************
+******************************************************/
+
+.container-link{
+    margin-top: 20px;
+}
+
+.inicio-link{
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    margin-left: 56px;
+    text-decoration: none;
+    color: #000000;
+}
+
+/******************************************************
+*******************- Title Styles -*********************
+******************************************************/
+.container-title-page{
+    text-align: center;
+}
+
+.title-page{
+    font-family: Poppins-SemiBold;
+    font-size: 50px;
+    margin: 0px;
+}
+
+/******************************************************
+*******************- Body Styles -*********************
+******************************************************/
+.card-page{
+    width: 977px; 
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 35px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 19px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+/******************************************************
+******************- help Styles -*********************
+******************************************************/
+
+.container-help{
+    padding-right: 25px;
+    padding-left: 25px;
+}
+
+.warning-help{
+    background-color: #FFE5B1;
+    border-radius: 15px;
+    padding: 5px 40px 9px 40px;
+    margin: 15px;
+}
+
+.help-title{
+    font-family: Poppins-Semibold;
+    margin: 0px;
+}
+
+.help-description{
+    font-family: Poppins-Regular;
+    margin: 0px;
+}
+
+.warning-title{
+    font-family: Poppins-Semibold;
+    color: #FF7600;
+    margin: 0px;
+}
+
+.warning-description{
+    font-family: Poppins-Semibold;
+    margin: 0px;
+}
+
+.drawer-description{
+    width: 20px;
+}
+
