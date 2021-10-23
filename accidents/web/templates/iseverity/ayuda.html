@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{ url_for( 'static', filename='/assets/img/iseverity/ico.png' ) }}">
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/main.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/ayuda.css' ) }}">
+    <title>Ayuda</title>
+</head>
+<body>
+    <div class="container-main">
+        <div class="flex-row container-logo">
+            <div class="col10">
+                <img src="{{ url_for( 'static', filename='/assets/img/iseverity/drawer.png' ) }}" alt="" srcset="">
+            </div>
+            <div class="col90">
+                <div class="container-logo-img">
+                    <img src="{{ url_for( 'static', filename='/assets/img/iseverity/ico_iseverity.png' ) }}" alt="" srcset="">
+                </div>
+            </div>
+        </div>
+        <div class="container-link">
+            <a class="inicio-link" href="/ISeverity/">< Inicio</a>
+        </div>
+        <div class="container-title-page">
+            <p class="title-page">Ayuda</p>
+        </div>
+        <div class="card-page">
+            <div class="container-help">
+                <p class="help-title">Esta sección contiene consejos para mejorar la experiencia de los usuarios y dar 
+                    orientación para el uso del aplicativo.
+                    </p>
+                <div class="warning-help">
+                    <p class="warning-title">Nota: </p>
+                    <p class="warning-description">Cada vez que se genera un resultado de una predicción o se ejecuta un procesos la información se almacena en un historial que se puede observar
+                        en el historial</p>
+                </div>
+                <p class="help-title">Opción Menu de navegación:</p>
+                <p class="help-description">
+                    Permite visualizar todas las opciones que componen el aplicativo web presionando el icono y permite toda la navegación <span><img class="drawer-description" src="{{ url_for( 'static', filename='/assets/img/iseverity/drawer.png' ) }}" alt="" srcset=""></span>
+                </p>
+                <p class="help-title">Opción Inicio:</p>
+                <p class="help-description">
+                    Interfaz principal del aplicativo donde se despliega la información general del 
+                    funcionamiento del mismo.
+                </p>
+                <p class="help-title">Opción Dashboards:</p>
+                <p class="help-description">
+                    Interfaz que permite visualizar los dashboards existentes y la navegación a los 
+                    mismos.
+                </p>
+                <p class="help-title">Opción Configuración:</p>
+                <p class="help-description">
+                    Interfaz que permite la visualización de los históricos de uso, administración de 
+                    fuentes y ejecución de procesos y su historial.
+                </p>
+                <p class="help-title">Opción Contacto:</p>
+                <p class="help-description">
+                    Interfaz que permite hacer un contacto directo con los desarrolladores del 
+                    aplicativo para cualquier pregunta, observación o sugerencia
+                </p>
+            </div>
+        </div>
+        <div class="footer">
+            <p class="footer-text light">Powered By <span class="footer-text bold">ISeverity</span> (Mateo Velez - Santiago
+                Leon)</p>
+        </div>
+    </div>
+</body>
+</html>
