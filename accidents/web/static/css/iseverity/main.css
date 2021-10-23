@@ -1,0 +1,420 @@
+/******************************************************
+**************- Import Fonts From Assets -*************
+******************************************************/
+
+@font-face {
+    font-family: Poppins-Bold;
+    src: url(../../assets/fonts/Poppins/Poppins-Bold.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Poppins-Light;
+    src: url(../../assets/fonts/Poppins/Poppins-Light.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Poppins-Medium;
+    src: url(../../assets/fonts/Poppins/Poppins-Medium.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url(../../assets/fonts/Poppins/Poppins-SemiBold.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Monserrat-Bold;
+    src: url(../../assets/fonts/Monserrat/Montserrat-Bold.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Monserrat-Medium;
+    src: url(../../assets/fonts/Monserrat/Montserrat-Medium.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+@font-face {
+    font-family: Monserrat-Light;
+    src: url(../../assets/fonts/Monserrat/Montserrat-Light.ttf); /* {{ url_for('static',filename='/assets/fonts/Poppins/Poppins-Bold.tff')}} */
+}
+
+/******************************************************
+*****************- Generics Styles -*******************
+******************************************************/
+
+.flex-row{
+    display: flex;
+    clear: both;
+    align-items: center;
+    justify-content: center;
+}
+
+.col10{
+    width: 10%;
+    display: inline;
+}
+
+.col20{
+    width: 20%;
+    display: inline;
+}
+
+.col30{
+    width: 30%;
+    display: inline;
+}
+
+.col40{
+    width: 40%;
+    display: inline;
+}
+
+.col50{
+    width: 50%;
+    float: left;
+    display: inline;
+}
+
+.col70{
+    width: 70%;
+    display: inline;
+}
+
+.col80{
+    width: 80%;
+    display: inline;
+}
+
+.col90{
+    width: 90%;
+    display: inline;
+}
+.light{
+    font-family: Poppins-Light;
+}
+
+.medium{
+    font-family: Poppins-Medium;
+}
+
+.bold{
+    font-family: Poppins-Bold;
+}
+
+.container-body{
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/******************************************************
+*****************- Navbar Styles -*******************
+******************************************************/
+
+.navbar{
+    background-color: #FFFFFF;
+    height: 44px;
+    /* padding: 8px; */
+    border-radius: 0px 0px 15px 15px;
+}
+
+.container-title{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.container-options{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.point-title{
+    background-color: #CD113B;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.text-title{
+    color: #000000;
+    font-size: 25px;
+}
+
+.option{
+    color: #FB0404;
+    font-size: 15px;
+    font-family: Monserrat-Medium;
+    text-decoration: none;
+    margin-right: 25px;
+}
+
+/******************************************************
+*****************- Banner Styles -*******************
+******************************************************/
+
+.banner{
+    background-color: #F6F6F6;
+    height: 440px;
+    /* width: 95%;
+    margin-left: 2.5%; */
+}
+
+.container-banner-txt{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.banner-txt{
+    font-family: Poppins-SemiBold;
+    font-size: 40px;
+    align-self: center;
+}
+
+.conatiner-banner-img{
+    margin: 1px;
+    display: flex;
+    justify-content: end;
+}
+
+.banner-img{
+    margin: 1px;
+    height: 425px;
+}
+
+/******************************************************
+*******************- Info Styles -*********************
+******************************************************/
+
+.container-info{
+   background-color: #FECE6F;
+   height: auto;
+}
+
+.container-info-title{
+    justify-content: center;
+}
+
+.info-title{
+    color: #CD113B;
+    font-family: Poppins-Medium;
+    font-size: 30px;
+    text-align: center;
+    margin: 0px;
+    padding-top: 10px;
+}
+
+.container-info-answer{
+    padding: 35px;
+}
+
+.info-answer{
+    color: #121212;
+    font-family: Monserrat-Medium;
+    font-size: 17px;
+    text-align: justify;
+    margin: 0px
+}
+
+/******************************************************
+******************- Inputs Styles -********************
+******************************************************/
+
+.container-inputs{
+    background-color: #F6F6F6;
+    height: auto;
+    padding: 40px;
+}
+
+.card{
+    background-color: #FFFFFF;
+    height: auto;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.card-title{
+    font-family: Poppins-Medium;
+    color: #000000;
+    font-size: 24px;
+    text-align: left;
+}
+
+.card-subtitle{
+    font-family: Poppins-Light;
+    color: #C3BCBC;
+    font-size: 16px;
+    text-align: left;
+}
+
+.title-card{
+    margin: 0px;
+}
+
+.subtitle-card{
+    margin: 0px;
+}
+
+.card-inputs{
+    margin-top: 20px;
+    margin-left: 47px;
+}
+
+.container-input{
+    /* margin-left: 10px; */
+    width: fit-content;
+    justify-content: center;
+}
+
+.input-label{
+    background-color: #F3F2F2;
+    font-family: Monserrat-Medium;
+    height: 23px;
+    width: 200px;
+    padding: 3px 7px 3px 7px ;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    margin-right: 25px;
+}
+
+.btn-save{
+    text-decoration: none;
+    background-color: #FF7600;
+    color: #ffffff;
+    border-radius: 8px;
+    width: 200px;
+    height: 27px;
+    border: 1px;
+    font-family: Monserrat-Medium;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 1px 6px 1px 6px ;
+}
+
+/******************************************************
+*****************- Footer Styles -*******************
+******************************************************/
+
+.footer{
+    background-color: #000000;
+    text-align: center;
+    height: 40px;
+    margin-top: 45px;
+}
+
+.footer-text{
+    font-size: 16px;
+    color: #ffffff;
+    padding: 5px 0px 0px 0px;
+}
+
+.footer-text bold{
+    font-style: bold;
+}
+
+/******************************************************
+*****************- Images Styles -*******************
+******************************************************/
+
+.images{
+    /* height: 200px; */
+    width: 400px;
+}
+
+.images:hover{
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+#popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 118, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: 250ms transform;
+    padding: 100px;
+}
+
+#selected-img{
+    max-height: 80%;
+}
+
+/******************************************************
+*****************-   Results Zone  -*******************
+******************************************************/
+
+.container-prediction{
+    /*width: fit-content;*/
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    /*justify-content: center;*/
+    background-color: #F6F6F6;
+}
+
+.container-result{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    height: auto;
+}
+
+.container-text-results{
+    width: 300px;
+    height: auto;
+    background: #FF9438;
+    border-radius: 15px;
+}
+
+.text-result{
+    font-family: Poppins-Bold;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-details-result{
+    font-family: Monserrat-Medium;
+    font-size: 15px;
+    color: #000000;
+    text-align: start;
+    vertical-align: middle;
+}
+
+/******************************************************
+****************-   Tooltip Styles  -******************
+******************************************************/
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    background-color: rgba(255, 118, 0, 0.65);
+    color: #ffffff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+
+    position: absolute;
+    z-index: 1;
+    margin-left: -11%;
+    margin-top: 35px;
+
+    font-family: Poppins-Light;
+    font-size: 14px;
+
+    opacity: 0;
+    transition: opacity 0.3s;
+    
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }

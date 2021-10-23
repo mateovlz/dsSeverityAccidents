@@ -1,0 +1,100 @@
+/******************************************************
+*****************- container main Styles -*******************
+******************************************************/
+
+
+
+
+.container-main{
+    width: 1218px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    padding: 0px 32px 0px 32px;
+}
+
+.banner-inicio{
+    background-color: #ffffff;
+    height: 440px;
+    /* width: 95%;
+    margin-left: 2.5%; */
+}
+
+
+
+/******************************************************
+*****************- inicio Styles -*******************
+******************************************************/
+
+.ico-img{
+    align-items: center;
+    justify-content: center;
+    margin-left: 374px;
+    height: 45px;
+
+}
+
+.inicio-banner-img{
+    margin: 1px;
+    width:  250px;
+}
+
+
+.inicio-banner-title-txt{
+    font-family: Poppins-SemiBold;
+    font-size: 35px;
+    align-self: center;
+}
+
+.inicio-banner-txt{
+    font-family: Poppins-SemiBold;
+    font-size: 18px;
+    align-self: center;
+    
+}
+
+.container-title-inicio{
+    display: flex;
+   align-items: center;
+    width: 207px;
+    justify-content: center;
+    background-color: #FFC554;
+    border-radius: 15px;
+    height: 49px;
+    position: absolute;
+    top: 466px;
+    left: 540px;
+ }
+
+ .inicio-banner-txt-title{
+    font-family: Poppins-SemiBold;
+    font-size: 20px;
+    align-self: center;
+}
+
+.container-description-inicio{
+    padding: 10px 50px 10px 50px;
+    background-color: #FFE5B1;
+    border-radius: 15px;
+    height: auto;
+ }
+
+ .inicio-banner-txt-description{
+    font-family:Poppins-Light;
+    font-size: 18px;
+    align-self: center;
+}
+
+.inicio-contianer-icolink{
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+ 
+ .ico-link{
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+ }
+
