@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/configuracion.css' ) }}">
+{% endblock %}
+{% block content %}
+    <div class="card-confi-menu">
+        <div class="container-help">
+            <div class="flex-row">
+                <div class="container-confi-opcion">
+                    <p class="confi-text-nemu">Fuentes</p>
+                </div>
+                <div class="container-confi-opcion">
+                    <p class="confi-text-nemu">Historial de Uso</p>
+                </div>
+                <div class="container-confi-opcion">
+                    <p class="confi-text-nemu">Historial de Ejecución<br>
+                        de Procesos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-container-confi">
+        <div class="container-title-page">
+            <div class="confi-text-title">
+              <P>Historial de uso</P>
+            </div>
+            <div class="confi-text-description">
+                <P>ISeverity cuenta con un historial de uso el cual te permite tener uns trayectoria 
+                    sobre los resultados de las predicciones del aplicativo web</P>
+              </div>
+        </div>
+    </div>
+    <div class="card-container-confi">
+      <div class="container-title-page">
+        <div class="confi-text-title">
+            <P>Historial de uso</P>
+        </div>
+        <div class ="divider"></div>
+        <table>
+           <div>
+            <tr class="confi-text-head-table" >
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Gravedad</th>
+              </tr>
+              <tr class="confi-text-body-table">
+                <td>Santiago</td>
+                <td>10-10-2021</td>
+                <td>Sin Heridas</td>
+              </tr>
+           </div>
+          </table>
+      </div>
+    </div>       
+{% endblock %}

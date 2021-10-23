@@ -55,5 +55,5 @@ def conf_admin_ejecucion_procesos():
 
 @iseverityBp.route("/conf-admin/historialuso")
 def conf_admin_historial_uso():
-     return render_template("base.html", linkInicio="True", titleHead="Historial", titlePage="Historial de Uso", footer=True)
+     return render_template("configuracion.html", linkInicio="True", titleHead="Historial", titlePage="Configuración  - Administración", footer=True)
 
