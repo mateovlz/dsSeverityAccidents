@@ -26,14 +26,24 @@
             <div class="confi-text-description">
                 <P>Puede argegar o eleimanr fuentes de infromacion para el producto de datos que realizara la preddiccion de tu siniestro.</P>
             </div>
-            <div class="flex-row">
-                <p class="title-input">Nombre:</p>
-                <input class="input-label-contacto" id="nombre" name="nombre" type="text">
-                <p class="title-input">Archivo:</p>
-                <input class="input-label-contacto" id="archivo" name="archivo" type="text">
-                <div class="container-btn-send">
-                    <input class="btn-send-load" type="submit" value="Cargar" form="contact-form" onclick="console.log('Funciona')">
-                </div>
+            <div>
+                <form action="" method="POST" enctype = "multipart/form-data">
+                    <div class="flex-row">
+                        <div class="tooltip">
+                            <p class="title-input">Nombre:</p>
+                            <input class="input-label-contacto input-proceso" id="nombre" name="nombre" type="text">
+                            <span class="tooltip-text">Nombre</span>
+                        </div>
+                        <div class="tooltip">
+                            <p class="title-input">Fuente:</p>
+                            <input class="input-label-contacto input-proceso" id="fuente" name="fuente" type="file">
+                            <span class="tooltip-text">Fuente</span>
+                        </div>
+                    </div>
+                    <div class="container-btn-send">
+                        <input class="btn-send-load" type="submit" value="Cargar">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

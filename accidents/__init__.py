@@ -15,6 +15,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE= app.root_path + '/database/ISeverity.db',
+        UPLOAD_FOLDER = app.root_path + '/dataproduct/ml/newfiles',
     )
 
     if test_config is None:
@@ -33,6 +34,8 @@ def create_app(test_config=None):
 
     @app.route('/')
     def hello():
+        epa = app.config['UPLOAD_FOLDER']
+        print(f'Ruta es {epa}')
         return 'Hello, World!'
 
     app.register_blueprint(dataproduct.dtproductbp)

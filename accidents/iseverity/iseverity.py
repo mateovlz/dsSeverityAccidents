@@ -1,12 +1,14 @@
 from flask import (
-     Blueprint, render_template, request
+     Blueprint, render_template, request, current_app
 )
 from .iseveritydata import (
      get_dashboard_seguridad_data, get_dashboard_gravedad_data, get_dashboard_localidades_data, get_dashboard_tipo_horario_data, 
      get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data, get_contacto_message, get_all_history_audit_log,
-     get_all_execution_audit_log, get_all_sources_audit_log
+     get_all_execution_audit_log, get_all_sources_audit_log, set_source_log, set_execution_log, set_history_log
 )
 from .isverityutils import send_email
+import os
+
 iseverityBp = Blueprint(
     'iseverity', __name__, url_prefix='/ISeverity', template_folder='../web/templates/iseverity',
 )
@@ -110,39 +112,58 @@ def dashboard_responsabilidad():
      graficos, warningDescription = get_dashboard_responsabilidad_data()
      return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
-@iseverityBp.route("/conf-admin/fuentes")
+@iseverityBp.route("/conf-admin/fuentes", methods=["GET","POST"])
 def conf_admin_fuentes():
      linkInicio=True
      footer=True
      titleHead="Fuentes"
      titlePage="Configuración - Administración"
      dataTable=None
+     if request.method == 'POST':
+          nombre = request.form['nombre']
+          fuente = request.files['fuente']
+          try:
+               fuente.save(os.path.join(current_app.config['UPLOAD_FOLDER'], fuente.filename))
+               print('FILE UPLOADED SUCCESSFULLY')
+          except Exception as e:
+               print(f'ERROR FILE - Error uploading or saving the file {e}')
+          fileExtension = fuente.filename.split('.')[1]
+          set_source_log(nombre, fileExtension, 'Cargado')
+          data=get_all_sources_audit_log()
+          if data == 'ERROR - Data Not Found':
+               dataTable=False
+          else:
+               dataTable=data
+          return render_template("fuentes.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
      data=get_all_sources_audit_log()
      if data == 'ERROR - Data Not Found':
           dataTable=False
      else:
           dataTable=data
-     for row in data:
-          for n in range(len(row)):
-               print(f'ROW {n}: {row[n]}')
      return render_template("fuentes.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
-@iseverityBp.route("/conf-admin/ejecucionprocesos")
+@iseverityBp.route("/conf-admin/ejecucionprocesos", methods=["GET","POST"])
 def conf_admin_ejecucion_procesos():
      linkInicio=True
      footer=True
      titleHead="Procesos"
      titlePage="Ejecución de Procesos"
      dataTable=None
+     if request.method == 'POST':
+          nombre = request.form['nombre']
+          set_execution_log(nombre,'Ejecucion')
+          data=get_all_execution_audit_log()
+          if data == 'ERROR - Data Not Found':
+               dataTable=False
+          else:
+               dataTable=data
+          return render_template("procesos.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
      data=get_all_execution_audit_log()
      if data == 'ERROR - Data Not Found':
           dataTable=False
      else:
           dataTable=data
-     for row in data:
-          for n in range(len(row)):
-               print(f'ROW {n}: {row[n]}')
-     return render_template("usos.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
+     return render_template("procesos.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/conf-admin/historialuso")
 def conf_admin_historial_uso():
@@ -151,13 +172,11 @@ def conf_admin_historial_uso():
      titleHead="Historial de Uso"
      titlePage="Configuración - Administración"
      dataTable=None
+     #set_source_log('Prueba Inserción', 'Text', 'Ejecucion')
      data=get_all_history_audit_log()
      if data == 'ERROR - Data Not Found':
           dataTable=False
      else:
           dataTable=data
-     for row in data:
-          for n in range(len(row)):
-               print(f'ROW {n}: {row[n]}')
      return render_template("historial.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 

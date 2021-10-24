@@ -161,3 +161,37 @@ def get_all_execution_audit_log():
 
 def get_all_sources_audit_log():
      return get_all_data('sources_log')
+
+def set_all_data(dataTable, columns, values, object):
+     try:
+         db = get_db()
+         db.execute(
+              '''INSERT INTO ''' + dataTable +''' ( ''' + columns + ''' )
+              VALUES (''' + values +''')  ''',
+              (object)
+         )
+         db.commit()
+         print('INSERT COMMITED')
+     except Exception as e:
+           print(f'ERROR - INSERT REFUSED {e}')
+
+def set_history_log(name, predictionResult, browser):
+     createTimestamp='24/10/2021'
+     columns = 'NAME, PREDICTION_RESULT, BROWSER, CREATED_TIMESTAMP, IS_ACTIVE'
+     values = '?,?,?,?,?'
+     newLog = [name, predictionResult, browser, createTimestamp, 1]
+     set_all_data('history_used_log',columns, values, newLog)
+
+def set_source_log(nameFile, typeFile, state):
+     createTimestamp='24/10/2021'
+     columns = 'NAME_FILE, TYPE_FILE, STATE, CREATED_TIMESTAMP, IS_ACTIVE'
+     values = '?,?,?,?,?'
+     newLog = [nameFile, typeFile, state, createTimestamp, 1]
+     set_all_data('sources_log',columns, values, newLog)
+
+def set_execution_log(name, state):
+     createTimestamp='24/10/2021'
+     columns = 'NAME, STATE, CREATED_TIMESTAMP, IS_ACTIVE'
+     values = '?,?,?,?'
+     newLog = [name , state, createTimestamp, 1]
+     set_all_data('execution_audit_log',columns, values, newLog)
