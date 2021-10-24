@@ -3,8 +3,9 @@ from flask import (
 )
 from .iseveritydata import (
      get_dashboard_seguridad_data, get_dashboard_gravedad_data, get_dashboard_localidades_data, get_dashboard_tipo_horario_data, 
-     get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data
+     get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data, get_contacto_message
 )
+from .isverityutils import send_email
 iseverityBp = Blueprint(
     'iseverity', __name__, url_prefix='/ISeverity', template_folder='../web/templates/iseverity',
 )
@@ -34,7 +35,9 @@ def contacto():
           email = request.form['email']
           asunto = request.form['asunto']
           mensaje = request.form['mensaje']
-          print(f"Estos son los datos recibidos {nombre} - {email} - {asunto} -  {mensaje} ")
+          #Build the body of the content for the email                            
+          mensaje_parsed = get_contacto_message(nombre, email, asunto, mensaje)
+          send_email(asunto,mensaje_parsed,email)
           return render_template("contacto.html", respond=respond, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
      return render_template("contacto.html", respond=respond, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
