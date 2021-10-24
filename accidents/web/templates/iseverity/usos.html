@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/configuracion.css' ) }}">
+{% endblock %}
+{% block content %}
+    <div class="card-confi-menu">
+        <div class="container-help">
+            <div class="flex-row">
+                <div class="container-confi-opcion">
+                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/fuentes">Fuentes</a></li>
+                </div>
+                <div class="container-confi-opcion">
+                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/historialuso">Historial de Uso</a></li>
+                </div>
+                <div class="container-confi-opcion">
+                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/ejecucionprocesos">Historial de Ejecución de Procesos</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-container-confi">
+        <div class="container-title-page">
+            <div class="confi-text-title">
+              <P>Historial de Ejecución de Procesos</P>
+            </div>
+            <div class="confi-text-description">
+                <P>Cada vez que agreges una fuente nueva o se ejecuquete este procespo para reentrenar el module genera una trazabilidad.</P>
+            </div>
+            <div class="flex-row">
+                <div class="container-btn-send">
+                    <input class="btn-send-execute" type="submit" value="Ejecutar" form="contact-form" onclick="console.log('Funciona')">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class= "card-container-confi">
+      <div class="container-title-page">
+        <div class="confi-text-title">
+            <P>Historial de Ejecución de Procesos</P>
+        </div>
+        <div class ="divider"></div>
+        <table>
+            <tr class="confi-text-head-table" >
+                <th class="col30">Nombre</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+              </tr>
+              <tr class="confi-text-body-table">
+                <td>Santiago leon</td>
+                <td>2021-10-12 20:19:45</td>
+                <td>Finalizado</td>
+              </tr>
+              <tr class="confi-text-body-table">
+                <td>Mateo velez</td>
+                <td>2021-10-12 20:19:45</td>
+                <td>Sin resultado</td>
+              </tr>
+          </table>
+      </div>
+    </div>       
+{% endblock %}
+
+

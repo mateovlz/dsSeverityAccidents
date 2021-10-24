@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/configuracion.css' ) }}">
+{% endblock %}
+{% block content %}
+    <div class="card-confi-menu">
+        <div class="container-help">
+            <div class="flex-row">
+                <div class="container-confi-opcion">
+                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/fuentes">Fuentes</a></li>
+                </div>
+                <div class="container-confi-opcion">
+                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/historialuso">Historial de Uso</a></li>
+                </div>
+                <div class="container-confi-opcion">
+                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/ejecucionprocesos">Historial de Ejecución de Procesos</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-container-confi">
+        <div class="container-title-page">
+            <div class="confi-text-title">
+              <P>Admisnitras las fuentes</P>
+            </div>
+            <div class="confi-text-description">
+                <P>Puede argegar o eleimanr fuentes de infromacion para el producto de datos que realizara la preddiccion de tu siniestro.</P>
+            </div>
+            <div class="flex-row">
+                <p class="title-input">Nombre:</p>
+                <input class="input-label-contacto" id="nombre" name="nombre" type="text">
+                <p class="title-input">Archivo:</p>
+                <input class="input-label-contacto" id="archivo" name="archivo" type="text">
+                <div class="container-btn-send">
+                    <input class="btn-send-load" type="submit" value="Cargar" form="contact-form" onclick="console.log('Funciona')">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class= "card-container-confi">
+      <div class="container-title-page">
+        <div class="confi-text-title">
+            <P>Fuentes</P>
+        </div>
+        <div class ="divider"></div>
+        <table>
+            <tr class="confi-text-head-table" >
+                <th class="col30">Nombre</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+              </tr>
+              <tr class="confi-text-body-table">
+                <td>Anuario accidentalidad 2017</td>
+                <td>2021-10-12 20:19:45</td>
+                <td>Activo</td>
+              </tr>
+              <tr class="confi-text-body-table">
+                <td>Anuario accidentalidad 2018</td>
+                <td>2021-10-12 20:19:45</td>
+                <td>Activo</td>
+              </tr>
+              <tr class="confi-text-body-table">
+                <td>Anuario accidentalidad 2019</td>
+                <td>2021-10-12 20:19:45</td>
+                <td>Activo</td>
+              </tr>
+          </table>
+      </div>
+    </div>       
+{% endblock %}
+
+
