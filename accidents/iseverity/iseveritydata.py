@@ -118,3 +118,21 @@ def get_dashboard_responsabilidad_data():
      }
     warningDescription = 'En este tablero se podra observar todos los graficos y resultados generados a traves del producto de datos en los siniestros viales por tipo de responsabilidad social.(Para observar los graficos de mejor manera dar click en el grafico)'
     return graficos, warningDescription
+
+def get_contacto_message(nombre,email, asunto, mensaje):
+     message = f'''<html>
+                    <body>
+                         <strong><h1>ISeverity</h1></strong>
+                         <h2>{nombre} se ha puesto en contacto</h2>
+                         <p>
+                              Asunto: {asunto} 
+                              <br></br>
+                              Email: {email} 
+                              <br></br>
+                              Mensaje: {mensaje}
+                         </p>
+                         <h3>Contestar en el menor tiempo posible, Gracias!</h3>
+                         <p>Powered By <span>ISeverity</span> (Mateo Velez - Santiago Leon)</p>
+                    </body>
+                  </html>'''
+     return message

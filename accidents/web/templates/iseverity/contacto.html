@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/contacto.css' ) }}">
+{% endblock %}
+{% block content %}
+    {% if respond == False %}
+    <div class="card-page">
+        <div class="container-form-contact">
+            <form id="contact-form" action="" method="POST">
+                <div class="container-input-contact">
+                    <div class="tooltip">
+                        <p class="title-input">Nombre:</p>
+                        <input class="input-label-contacto" id="nombre" name="nombre" type="text">
+                        <span class="tooltip-text">Nombre</span>
+                    </div>
+                    <div class="tooltip">
+                        <p class="title-input">Tu Email:</p>
+                        <input class="input-label-contacto" id="email" name="email" type="text">
+                        <span class="tooltip-text">Tu Email</span>
+                    </div>
+                    <div class="tooltip">
+                        <p class="title-input">Asunto:</p>
+                        <input class="input-label-contacto" id="asunto" name="asunto" type="text">
+                        <span class="tooltip-text">Asunto</span>
+                    </div>
+                </div>
+            </form>
+            <div class="tooltip">
+                <p class="title-input">Mensaje:</p>
+                <textarea class="input-label-contacto-textarea" name="mensaje" id="mensaje" cols="10" rows="10" form="contact-form">Ingrese aqui</textarea>
+                <span class="tooltip-text">Mensaje</span>
+            </div>
+            <div class="container-btn-send">
+                <input class="btn-send-contact" type="submit" value="Enviar" form="contact-form" onclick="console.log('Funciona')">
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="card-page">
+        <div class="container-title-page">
+            <p class="title-page">Gracias por tu Mensaje</p>
+        </div>
+        <p class="help-description">
+            Tu opinión es muy importante para nosotros, nos pondremos en contacto en cuanto podamos por medio del correo electronico. 	&#128521; 	&#128077;
+        </p>
+    </div>
+    {% endif %}
+{% endblock %}

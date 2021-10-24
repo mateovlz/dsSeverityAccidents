@@ -1,3 +1,6 @@
+/******************************************************
+**************- Dashboards Graphs Styles -*************
+******************************************************/
 .warning-page{
     width: 1080px; 
     margin-top: 0px;
@@ -76,4 +79,47 @@
     display: flex;
     margin-top: 40px;
     margin-left: 20%;
+}
+
+/******************************************************
+**************- Dashboards Options Styles -*************
+******************************************************/
+.first-option{
+    background-color: #CD113B;
+}
+
+.second-option{
+    background-color: #52006A;
+}
+
+.third-option{
+    background-color: #9A5E7F;
+}
+
+.fourth-option{
+    background-color: #FF7600;
+}
+
+.fifth-option{
+    background-color: #CC0E74;
+}
+
+.sixth-option{
+    background-color: #62760C;
+}
+
+.card-option{
+    border-radius: 15px;
+    height: 125px;
+    margin: 10px;
+    text-align: center;
+    justify-content: center;
+    padding: 66px 20px 0px 20px;
+}
+
+.options{
+    font-family: Poppins-Regular;
+    font-size: 24px;
+    text-decoration: none;
+    color:#FFFFFF;
 }
