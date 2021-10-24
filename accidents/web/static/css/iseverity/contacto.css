@@ -1,0 +1,68 @@
+/******************************************************
+******************- Inputs Styles -*********************
+******************************************************/
+.input-label-contacto{
+    background-color: #F3F2F2;
+    font-family: Monserrat-Medium;
+    width: 625px;
+    padding: 3px 7px 3px 7px ;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    margin-right: 25px;
+}
+
+.input-label-contacto-textarea {
+    background-color: #F3F2F2;
+    font-family: Monserrat-Medium;
+    width: 625px;
+    padding: 3px 7px 3px 7px ;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    margin-right: 25px;
+}
+
+.container-input-contact{
+    justify-content: center;
+}
+
+.tooltip{
+    width: 100%;
+}
+
+.title-input{
+    font-family: Poppins-Medium;
+    font-size: 17px;
+    padding: 5px 0px 5px 0px;
+    margin: 0px;
+}
+
+/******************************************************
+******************- Form Styles -*********************
+******************************************************/
+
+.container-form-contact{
+    padding-right: 25px;
+    padding-left: 25px;
+    margin: 0% 25% 0px 18%;
+}
+
+/******************************************************
+******************- Button Styles -*********************
+******************************************************/
+
+.btn-send-contact{
+    text-decoration: none;
+    background-color: #FF7600;
+    color: #ffffff;
+    border-radius: 8px;
+    height: 27px;
+    border: 1px;
+    font-family: Monserrat-Medium;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 1px 6px 1px 6px ;
+    margin: 20px 0px 0px 292px;
+    padding: 5px 7px 26px 7px; 
+}

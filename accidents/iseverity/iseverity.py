@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template
+from flask import (
+     Blueprint, render_template, request
+)
 from .iseveritydata import (
      get_dashboard_seguridad_data, get_dashboard_gravedad_data, get_dashboard_localidades_data, get_dashboard_tipo_horario_data, 
      get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data
@@ -17,9 +19,24 @@ def main():
 def ayuda():
     return render_template("ayuda.html", linkInicio="True", titleHead="Ayuda", titlePage="Ayuda", footer=True)
 
-@iseverityBp.route("/contacto")
+@iseverityBp.route("/contacto", methods=["GET","POST"])
 def contacto():
-     return render_template("base.html", linkInicio="True", titleHead="Contacto", titlePage="Contacto", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Contacto"
+     titlePage="Contacto"
+     if request.method == 'GET':
+        result = None
+        respond=False
+     if request.method == 'POST':
+          respond=True
+          nombre = request.form['nombre']
+          email = request.form['email']
+          asunto = request.form['asunto']
+          mensaje = request.form['mensaje']
+          print(f"Estos son los datos recibidos {nombre} - {email} - {asunto} -  {mensaje} ")
+          return render_template("contacto.html", respond=respond, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
+     return render_template("contacto.html", respond=respond, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/dashboards")
 def dashboards():
