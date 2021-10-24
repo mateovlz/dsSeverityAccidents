@@ -43,7 +43,11 @@ def contacto():
 
 @iseverityBp.route("/dashboards")
 def dashboards():
-     return render_template("base.html", linkInicio="True", titleHead="Dashboards" , titlePage="Dashboards", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Dashboards"
+     titlePage="Dashboards"
+     return render_template("dashboard-options.html", linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/dashboards/seguridad")
 def dashboard_seguridad():

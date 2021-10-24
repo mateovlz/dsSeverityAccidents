@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/dashboard.css' ) }}">
+{% endblock %}
+{% block content %}
+    <div class="card-page">
+        <div>
+            <div class="flex-row">
+                <div class="col50 card-option first-option">
+                    <a class="options" href="/ISeverity/dashboards/seguridad">Siniestros Viales por Elementos de Seguridad</a>
+                </div>
+                <div class="col50 card-option second-option">
+                    <a class="options" href="/ISeverity/dashboards/gravedad">Siniestros Viales Por Gravedad</a>
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="col50 card-option third-option">
+                    <a class="options" href="/ISeverity/dashboards/localidades">Siniestros Viales Por Localidades</a>
+                </div>
+                <div class="col50 card-option fourth-option">
+                    <a class="options" href="/ISeverity/dashboards/tipohorario">Siniestros Viales Por Tipo de Horario</a>
+                </div>
+            </div>
+            <div class="flex-row">
+                <div class="col50 card-option fifth-option">
+                    <a class="options" href="/ISeverity/dashboards/responsabilidad">Siniestros Viales Por Tipo de Responsabilidad Social</a>
+                </div>
+                <div class="col50 card-option sixth-option">
+                    <a class="options" href="/ISeverity/dashboards/tipovehiculo">Siniestros Viales Por Tipo de Vehiculo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
