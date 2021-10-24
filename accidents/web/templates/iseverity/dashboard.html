@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/dashboard.css' ) }}">
+{% endblock %}
+{% block content %}
+    <div class="warning-page">
+        <p class="warning-description">{{ warningDescription }}</p>
+    </div>
+    {% if prediction%} 
+        <p>here goes prediction</p>
+    {% endif %}
+    {% for key, grafico in graficos.items() %}
+    <div class="card-page dashboard-card">
+        <div class="container-title-img">
+            <p class="title-img">{{grafico['title_image']}}</p>
+        </div>
+        <div class="container-image">
+            <img class="dashboard-image" src="{{ url_for( 'static', filename='/assets/img/dataproduct/' + grafico['name_image'] ) }}" alt="{{grafico['title_image']}}" srcset="">
+        </div>
+    </div>
+    {% endfor %}
+    <div id="popup-image">
+        <div class="container-title-img">
+            <p id="popup-title-img" class="title-img"></p>
+        </div>
+        <div>
+            <img src="" alt="" id="selected-image">
+        </div>
+    </div>
+
+{% endblock %}
+{% block behaviour %}
+    <script src="{{ url_for( 'static', filename='/js/iseverity/dashboards-images.js' ) }}"></script>
+{% endblock %}

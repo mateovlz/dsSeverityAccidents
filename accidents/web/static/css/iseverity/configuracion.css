@@ -1,0 +1,80 @@
+
+.card-confi-menu{
+    width: 977px; 
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #FFE5B1;
+    box-shadow: 2px 2px 19px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+.card-container-confi{
+    width: 977px; 
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 19px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+}
+
+.container-confi-opcion{
+    margin-left: 50PX;
+    margin-right: 50PX;
+}
+
+.confi-text-nemu{
+    font-family: Poppins-Light;
+    font-size: 20px;
+    margin: 0px;
+}
+.confi-text-title{
+    font-family: Poppins-Semibold;
+    font-size: 20px;
+    margin: 0px;
+}
+.confi-text-description{
+    color: #C3BCBC;
+    font-family: Poppins-Light;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.confi-title{
+    font-family: Poppins-Semibold;
+    margin: 0px;
+}
+
+.divider{
+    background-color: #FF7600;
+    height: 3px;
+    width: 977px; 
+
+}
+
+.confi-text-head-table{
+    font-family: Poppins-Semibold;
+    font-size: 20px;
+    margin: 0px;
+}
+.confi-text-body-table{
+    color: #000;
+    font-family: Poppins-Light;
+    font-size: 20px;
+    margin: 0px;
+}
+
+
