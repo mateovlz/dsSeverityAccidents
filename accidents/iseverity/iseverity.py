@@ -111,13 +111,13 @@ def dashboard_responsabilidad():
 
 @iseverityBp.route("/conf-admin/fuentes")
 def conf_admin_fuentes():
-     return render_template("base.html", linkInicio="True", titleHead="Fuentes", titlePage="Configuración - Administración", footer=True)
+     return render_template("fuentes.html", linkInicio="True", titleHead="Fuentes", titlePage="Configuración - Administración", footer=True)
 
 @iseverityBp.route("/conf-admin/ejecucionprocesos")
 def conf_admin_ejecucion_procesos():
-     return render_template("base.html", linkInicio="True", titleHead="Procesos", titlePage="Ejecución de Procesos", footer=True)
+     return render_template("usos.html", linkInicio="True", titleHead="Procesos", titlePage="Ejecución de Procesos", footer=True)
 
 @iseverityBp.route("/conf-admin/historialuso")
 def conf_admin_historial_uso():
-     return render_template("configuracion.html", linkInicio="True", titleHead="Historial", titlePage="Configuración  - Administración", footer=True)
+     return render_template("historial.html", linkInicio="True", titleHead="Historial", titlePage="Configuración  - Administración", footer=True)
 

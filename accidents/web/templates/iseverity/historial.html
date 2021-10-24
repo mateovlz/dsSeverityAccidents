@@ -7,14 +7,13 @@
         <div class="container-help">
             <div class="flex-row">
                 <div class="container-confi-opcion">
-                    <p class="confi-text-nemu">Fuentes</p>
+                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/fuentes">Fuentes</a></li>
                 </div>
                 <div class="container-confi-opcion">
-                    <p class="confi-text-nemu">Historial de Uso</p>
+                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/historialuso">Historial de Uso</a></li>
                 </div>
                 <div class="container-confi-opcion">
-                    <p class="confi-text-nemu">Historial de Ejecución<br>
-                        de Procesos</p>
+                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/ejecucionprocesos">Historial de Ejecución de Procesos</a></li>
                 </div>
             </div>
         </div>
@@ -30,16 +29,15 @@
               </div>
         </div>
     </div>
-    <div class="card-container-confi">
+    <div class= "card-container-confi">
       <div class="container-title-page">
         <div class="confi-text-title">
             <P>Historial de uso</P>
         </div>
         <div class ="divider"></div>
         <table>
-           <div>
             <tr class="confi-text-head-table" >
-                <th>Nombre</th>
+                <th class="col30">Nombre</th>
                 <th>Fecha</th>
                 <th>Gravedad</th>
               </tr>
@@ -48,8 +46,14 @@
                 <td>10-10-2021</td>
                 <td>Sin Heridas</td>
               </tr>
-           </div>
+              <tr class="confi-text-body-table">
+                <td>Santiago</td>
+                <td>10-10-2021</td>
+                <td>Sin Heridas</td>
+              </tr>
           </table>
       </div>
     </div>       
 {% endblock %}
+
+

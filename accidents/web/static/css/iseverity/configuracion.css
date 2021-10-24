@@ -22,8 +22,8 @@
     margin-right: auto;
     margin-top: 40px;
     margin-bottom: 12px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 35px;
     padding-right: 35px;
     background-color: #FFFFFF;
@@ -40,6 +40,10 @@
     font-family: Poppins-Light;
     font-size: 20px;
     margin: 0px;
+    color: #000;
+    text-decoration: none;
+    pointer-events: auto;
+    cursor: pointer;
 }
 .confi-text-title{
     font-family: Poppins-Semibold;
@@ -75,6 +79,101 @@
     font-family: Poppins-Light;
     font-size: 20px;
     margin: 0px;
+}
+
+.option-list-confi{
+    padding-top: 2px;
+    width: 100%;
+    height: 25px;
+    padding-left: 5px;
+}
+
+.option {
+    cursor: pointer;
+}
+
+.option-list-confi:hover {
+    font-family: Poppins-Semibold;
+    color: #000;
+}
+
+/******************************************************
+******************- Inputs Styles -*********************
+******************************************************/
+.input-label-contacto{
+    background-color: #F3F2F2;
+    font-family: Monserrat-Medium;
+    width: 200px;
+    padding: 3px 7px 3px 7px ;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    margin-right: 25px;
+}
+
+.input-label-contacto-textarea {
+    background-color: #F3F2F2;
+    font-family: Monserrat-Medium;
+    width: 200px;
+    padding: 3px 7px 3px 7px ;
+    border: 1px solid #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    margin-right: 25px;
+}
+
+.container-input-contact{
+    justify-content: center;
+}
+
+.tooltip{
+    width: 100%;
+}
+
+.title-input{
+    font-family: Poppins-Medium;
+    font-size: 17px;
+    padding: 5px 0px 5px 0px;
+    margin: 0px;
+}
+
+
+
+
+/******************************************************
+******************- Button Styles -*********************
+******************************************************/
+
+.btn-send-load{
+    text-decoration: none;
+    background-color: #FF7600;
+    color: #ffffff;
+    border-radius: 8px;
+    height: 27px;
+    border: 1px;
+    font-family: Monserrat-Medium;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 1px 6px 1px 6px ;
+    margin: 20px 0px 19px 108px;
+    padding: 5px 7px 26px 7px; 
+}
+
+
+
+.btn-send-execute{
+    text-decoration: none;
+    background-color: #FF7600;
+    color: #ffffff;
+    border-radius: 8px;
+    height: 27px;
+    border: 1px;
+    font-family: Monserrat-Medium;
+    font-size: 17px;
+    cursor: pointer;
+    padding: 1px 6px 1px 6px ;
+    margin: 20px 0px 19px 0px;
+    padding: 5px 7px 26px 7px; 
 }
 
 
