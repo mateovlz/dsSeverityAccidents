@@ -3,7 +3,8 @@ from flask import (
 )
 from .iseveritydata import (
      get_dashboard_seguridad_data, get_dashboard_gravedad_data, get_dashboard_localidades_data, get_dashboard_tipo_horario_data, 
-     get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data, get_contacto_message
+     get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data, get_contacto_message, get_all_history_audit_log,
+     get_all_execution_audit_log, get_all_sources_audit_log
 )
 from .isverityutils import send_email
 iseverityBp = Blueprint(
@@ -111,13 +112,52 @@ def dashboard_responsabilidad():
 
 @iseverityBp.route("/conf-admin/fuentes")
 def conf_admin_fuentes():
-     return render_template("fuentes.html", linkInicio="True", titleHead="Fuentes", titlePage="Configuración - Administración", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Fuentes"
+     titlePage="Configuración - Administración"
+     dataTable=None
+     data=get_all_sources_audit_log()
+     if data == 'ERROR - Data Not Found':
+          dataTable=False
+     else:
+          dataTable=data
+     for row in data:
+          for n in range(len(row)):
+               print(f'ROW {n}: {row[n]}')
+     return render_template("fuentes.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/conf-admin/ejecucionprocesos")
 def conf_admin_ejecucion_procesos():
-     return render_template("usos.html", linkInicio="True", titleHead="Procesos", titlePage="Ejecución de Procesos", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Procesos"
+     titlePage="Ejecución de Procesos"
+     dataTable=None
+     data=get_all_execution_audit_log()
+     if data == 'ERROR - Data Not Found':
+          dataTable=False
+     else:
+          dataTable=data
+     for row in data:
+          for n in range(len(row)):
+               print(f'ROW {n}: {row[n]}')
+     return render_template("usos.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/conf-admin/historialuso")
 def conf_admin_historial_uso():
-     return render_template("historial.html", linkInicio="True", titleHead="Historial", titlePage="Configuración  - Administración", footer=True)
+     linkInicio=True
+     footer=True
+     titleHead="Historial de Uso"
+     titlePage="Configuración - Administración"
+     dataTable=None
+     data=get_all_history_audit_log()
+     if data == 'ERROR - Data Not Found':
+          dataTable=False
+     else:
+          dataTable=data
+     for row in data:
+          for n in range(len(row)):
+               print(f'ROW {n}: {row[n]}')
+     return render_template("historial.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 

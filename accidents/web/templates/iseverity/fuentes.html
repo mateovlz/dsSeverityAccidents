@@ -45,25 +45,27 @@
         <div class ="divider"></div>
         <table>
             <tr class="confi-text-head-table" >
-                <th class="col30">Nombre</th>
-                <th>Fecha</th>
-                <th>Estado</th>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Anuario accidentalidad 2017</td>
-                <td>2021-10-12 20:19:45</td>
-                <td>Activo</td>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Anuario accidentalidad 2018</td>
-                <td>2021-10-12 20:19:45</td>
-                <td>Activo</td>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Anuario accidentalidad 2019</td>
-                <td>2021-10-12 20:19:45</td>
-                <td>Activo</td>
-              </tr>
+                <th>Id:</th>
+                <th>Nombre Archivo:</th>
+                <th>Extension:</th>
+                <th>Estado:</th>
+                <th>Fecha:</th>
+            </tr>
+            {% if dataTable %}
+                {% for row in dataTable%}
+                    <tr class="confi-text-body-table">
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr class="confi-text-body-table">
+                    <td>No hay Datos Disponibles</td>
+                </tr>
+            {% endif %}
           </table>
       </div>
     </div>       

@@ -1,3 +1,4 @@
+from .iseveitydb import get_db
 def get_dashboard_seguridad_data():
     graficos ={
           'Imagen 1': {
@@ -136,3 +137,27 @@ def get_contacto_message(nombre,email, asunto, mensaje):
                     </body>
                   </html>'''
      return message
+
+def get_all_data(dataTable):
+     db = get_db()
+     result = None
+     data = db.execute(
+          '''SELECT * 
+             FROM ''' + dataTable + ''' 
+             WHERE is_active = 1'''
+     ).fetchall()
+
+     if data is None:
+          result = "ERROR - Data Not Found"
+     else:
+          result = data
+     return result
+
+def get_all_history_audit_log():
+     return get_all_data('history_used_log')
+
+def get_all_execution_audit_log():
+     return get_all_data('execution_audit_log')
+
+def get_all_sources_audit_log():
+     return get_all_data('sources_log')

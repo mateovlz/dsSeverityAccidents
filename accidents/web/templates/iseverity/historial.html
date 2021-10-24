@@ -35,23 +35,32 @@
             <P>Historial de uso</P>
         </div>
         <div class ="divider"></div>
-        <table>
-            <tr class="confi-text-head-table" >
-                <th class="col30">Nombre</th>
-                <th>Fecha</th>
-                <th>Gravedad</th>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Santiago</td>
-                <td>10-10-2021</td>
-                <td>Sin Heridas</td>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Santiago</td>
-                <td>10-10-2021</td>
-                <td>Sin Heridas</td>
-              </tr>
-          </table>
+        <div>
+            <table>
+                <tr class="confi-text-head-table" >
+                    <th>Id:</th>
+                    <th>Nombre:</th>
+                    <th>Gravedad:</th>
+                    <th>Navegador:</th>
+                    <th>Fecha:</th>
+                </tr>
+                {% if dataTable %}
+                    {% for row in dataTable%}
+                        <tr class="confi-text-body-table">
+                            <td>{{ row[0] }}</td>
+                            <td>{{ row[1] }}</td>
+                            <td>{{ row[2] }}</td>
+                            <td>{{ row[3] }}</td>
+                            <td>{{ row[4] }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr class="confi-text-body-table">
+                        <td>No hay Datos Disponibles</td>
+                    </tr>
+                {% endif %}
+              </table>
+        </div>
       </div>
     </div>       
 {% endblock %}

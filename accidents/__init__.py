@@ -11,6 +11,11 @@ def create_app(test_config=None):
                 template_folder='./web/templates'
                 #,static_url_path='/web/static'
                 )
+    
+    app.config.from_mapping(
+        SECRET_KEY='dev',
+        DATABASE= app.root_path + '/database/ISeverity.db',
+    )
 
     if test_config is None:
         app.config.from_pyfile('config.py',silent=True)

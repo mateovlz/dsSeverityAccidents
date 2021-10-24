@@ -33,3 +33,6 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+# Remove temporaly the ml directory for source version control system
+accidents/dataproduct/ml
