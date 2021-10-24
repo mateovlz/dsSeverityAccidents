@@ -123,3 +123,105 @@
     text-decoration: none;
     color:#FFFFFF;
 }
+
+.title-input-dashboard{
+    font-family: Poppins-Medium;
+    width: 80px;
+    font-size: 17px;
+    padding: 5px 0px 5px 0px;
+    margin: 0px;
+}
+
+.title-input-dashboard1{
+    font-family: Poppins-Medium;
+    width: 150px;
+    font-size: 17px;
+    padding: 5px 0px 5px 0px;
+    margin: 0px;
+}
+
+.label-input-dashboard{
+    background-color: #F3F2F2;
+    font-family: Monserrat-Medium;
+    height: 23px;
+    width: 150PX;
+    padding: 3px 7px 3px 7px ;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    margin-right: 25px;
+}
+
+.margin-label{
+ margin-top:30px;
+ margin-bottom: 30;
+}
+
+
+
+/******************************************************
+******************- Continaer btn Styles -*********************
+******************************************************/
+
+.container-form-contact{
+    padding-right: 25px;
+    padding-left: 25px;
+    margin: 0% 25% 0px 18%;
+}
+
+
+/******************************************************
+******************- Button Styles -*********************
+******************************************************/ 
+
+.btn-send-gra{
+    text-decoration: none;
+    background-color: #FF7600;
+    color: #ffffff;
+    border-radius: 8px;
+    height: 40px;
+    border: 1px;
+    font-family: Monserrat-Medium;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 20px 0px 0px 446px;
+    padding: 8px 10px 8px 10px; 
+    text-align: center;
+}
+
+/******************************************************
+******************- Text Styles -*********************
+******************************************************/ 
+
+
+.result-text-title{
+    font-family: Poppins-Semibold;
+    font-size: 35px;
+    margin: 0px;
+}
+.result-text-description{
+    color: #C3BCBC;
+    font-family: Poppins-medium;
+    font-size: 20px;
+    margin: 0px;
+}
+.result-text-result{
+    color: #000;
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    margin: 0px;
+}
+.result-text-gra{
+    color: #FF7600;
+    font-family: Poppins-Semibold;
+    font-size: 25px;
+    margin: 0px;
+}
+
+.container-result{
+    background-color: #FFE5B1;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    height: auto;
+    border-radius: 15px;
+}

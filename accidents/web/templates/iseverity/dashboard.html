@@ -1,34 +1,257 @@
 {% extends "base.html" %}
 {% block head %}
-    <link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/dashboard.css' ) }}">
+<link rel="stylesheet" href="{{ url_for( 'static', filename='/css/iseverity/dashboard.css' ) }}">
 {% endblock %}
 {% block content %}
-    <div class="warning-page">
-        <p class="warning-description">{{ warningDescription }}</p>
-    </div>
-    {% if prediction%} 
-        <p>here goes prediction</p>
+<div class="warning-page">
+    <p class="warning-description">{{ warningDescription }}</p>
+</div>
+    {% if prediction %}
+        <div class="card-page">
+                <div>
+                    <P class="result-text-title">Predice la gravedad de un siniestro vial</P>
+                </div>
+                <div>
+                    <P class="result-text-description">Ingresa los valores para predecir un siniestros  vial</P>
+                </div>
+            </div>
+        </div>
+        <div class="card-page">
+            <form id="contact-form-gra" action="" method="POST">
+                <div class="flex-row margin-label">
+                    <div class="tooltip">
+                        <label class="title-input-dashboard">Nombre:</label>
+                        <input class="label-input-dashboard" id="nombre" name="nombre" type="text">
+                        <span class="tooltip-text">Nombre</span>
+                    </div>
+                    <div class="tooltip">
+                        <label class="title-input-dashboard">Tu Edad:</label>
+                        <input class="label-input-dashboard" id="edad" name="edad" type="text">
+                        <span class="tooltip-text">Edad Procesada</span>
+                    </div>
+                    <div class="tooltip">
+                        <div class="tooltip">
+                            <label class="title-input-dashboard1">Modelo Vehiculo:</label>
+                            <input class="label-input-dashboard" id="modelo_vehiculo" name="modelo_vehiculo" type="text">
+                            <span class="tooltip-text">Modelo del Vehiculo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-row margin-label">
+                    <div class="tooltip" style="margin-right: 0px;">
+                        <label class="title-input-dashboard" for="">Dia Procesado</label>
+                        <select class="label-input-dashboard" name="dia" id="dia" placeholder="dia">
+                            <option value="0">Selecciona un Dia</option>
+                            <option value="1">Lunes</option>
+                            <option value="2">Martes</option>
+                            <option value="4">Miércoles</option>
+                            <option value="5">Jueves</option>
+                            <option value="6">Viernes</option>
+                            <option value="7">Sabádo</option>
+                            <option value="8">Domingo</option>
+                        </select>
+                        <span class="tooltip-text">Dia Procesad</span>
+                    </div>
+                    <div class="tooltip" style="margin-right: 16px;">
+                        <label class="title-input-dashboard" for="">Localidad:</label>
+                        <select class="label-input-dashboard" name="localidad" id="localidad" placeholder="localidad">
+                            <option value="0">Selecciona un Localidad</option>
+                            <option value="1">kennedy</option>
+                            <option value="2">Usaquen</option>
+                            <option value="3">Engatia</option>
+                            <option value="4">Suba</option>
+                            <option value="5">Fontibon</option>
+                            <option value="6">Puente Aranda</option>
+                            <option value="7">Chapinero</option>
+                            <option value="8">Teusaquillo</option>
+                            <option value="9">Bosa</option>
+                            <option value="10">Ciudad Bolivar</option>
+                            <option value="11">Los Martines</option>
+                            <option value="12">Santa Fe</option>
+                            <option value="13">Tunjuelito</option>
+                            <option value="14">San Cristobal</option>
+                            <option value="15">Rafael Uribe Uribe</option>
+                            <option value="16">Antonio Nariño</option>
+                            <option value="17">Usme</option>
+                            <option value="18">Candelaria</option>
+                            <option value="19">Sumapaz</option>
+                        </select>
+                        <span class="tooltip-text">Localidad</span>
+                    </div>
+                    <div class="tooltip" style="margin-right: 39px;">
+                        <label class="title-input-dashboard" for="">Hora Procesado:</label>
+                        <select class="label-input-dashboard" name="hora" id="hora" placeholder="hora">
+                            <option value="0">Selecciona un Hora</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">24</option>
+                            <option value="24">24</option>
+                        </select>
+                        <span class="tooltip-text">Hora Procesad</span>
+                    </div>
+                </div>
+                <div class="flex-row margin-label">
+                    <div class="tooltip" style="margin-right: 0px;">
+                        <label class="title-input-dashboard" for="">Mes Procesado:</label>
+                        <select class="label-input-dashboard" name="mes" id="mes" placeholder="mes">
+                            <option value="0">Selecciona un Mes</option>
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                        <span class="tooltip-text">Dia Procesad</span>
+                    </div>
+
+                    <div class="tooltip" style="margin-right: 16px;">
+                        <label class="title-input-dashboard" for="">Lleva Casco:</label>
+                        <select class="label-input-dashboard" name="casco" id="casco" placeholder="cascosoat">
+                            <option value="0">No Aplica</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                        <span class="tooltip-text">Lleva Casco</span>
+                    </div>
+                    <div class="tooltip" style="margin-right: 39px;">
+                        <label class="title-input-dashboard" for="">Lleva Chaleco:</label>
+                        <select class="label-input-dashboard" name="chaleco" id="chaleco" placeholder="chaleco">
+                            <option value="0">No Aplica</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                        <span class="tooltip-text">Lleva Chaleco</span>
+                    </div>
+                </div>
+                <div class="flex-row margin-label">
+                    <div class="tooltip" style="margin-right: 47px;">
+                        <label class="title-input-dashboard" for="">Embriaguez:</label>
+                        <select class="label-input-dashboard" name="embriaguez" id="embriaguez" placeholder="embriaguezsexo">
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                        <span class="tooltip-text">Embriaguez</span>
+                    </div>
+                    <div class="tooltip" style="margin-right: 20px; margin-left:20px;">
+                        <label class="title-input-dashboard" for="">Sexo:</label>
+                        <select class="label-input-dashboard" name="sexo" id="sexo" placeholder="sexo">
+                            <option value="0">No Aplica</option>
+                            <option value="1">Hombre</option>
+                            <option value="2">Mujer</option>
+                        </select>
+                        <span class="tooltip-text">Sexo</span>
+                    </div>
+                    <div class="tooltip" style="margin-left:88px; margin-right:20px;">
+                        <label class="title-input-dashboard" for="">Soat:</label>
+                        <select class="label-input-dashboard" name="soat" id="soat" placeholder="soat">
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                        <span class="tooltip-text">Soat</span>
+                    </div>
+                </div>
+                <div class="flex-row margin-label">
+                    <div class="tooltip">
+                        <label class="title-input-dashboard" for="">Lleva Cinturon:</label>
+                        <select class="label-input-dashboard" name="cinturon" id="cinturon" placeholder="cinturon">
+                            <option value="0">No Aplica</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
+                        </select>
+                        <span class="tooltip-text">Lleva Cinturon</span>
+                    </div>
+                    <div class="tooltip">
+                        <label class="title-input-dashboard" for="">Clase Vehiculo</label>
+                        <select class="label-input-dashboard" name="clase_vehiculo" id="clase_vehiculo"
+                            placeholder="clase_vehiculo">
+                            <option value="0">Selecciona un clase</option>
+                            <option value="1">Automovil</option>
+                            <option value="2">Motocicleta</option>
+                            <option value="3">Camioneta</option>
+                            <option value="4">Bus</option>
+                            <option value="5">Camion, Furgon</option>
+                            <option value="6">Campero</option>
+                            <option value="7">Bicicleta</option>
+                            <option value="8">Microbus</option>
+                            <option value="9">Buseta</option>
+                            <option value="10">Tractocamion</option>
+                            <option value="11">Motocarro</option>
+                            <option value="12">Bicitaxi</option>
+                            <option value="13">Motociclo</option>
+                            <option value="14">Cuatrimoto</option>
+                        </select>
+                        <span class="tooltip-text">Clase Vehiculo</span>
+                    </div>
+                </div>
+            </form>
+            <div class="container-btn-send">
+                <input class="btn-send-gra" type="submit" value="Enviar" form="contact-form-gra"
+                    onclick="console.log('funcionas')">
+            </div>
+        </div>
+        
+        {% if result %}
+            <div class="card-page">
+                <div>
+                    <P class="result-text-title">Resultado de la prediccion:</P>
+                </div>
+                <div class="container-result">
+                    <P class="result-text-result">El resultado es: <span class="result-text-gra">{{result}} </span> oeste resultado es basado de un algoritmo de machine learning Random forest  el cual se encarga de tata ta ta....</P>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
     {% endif %}
-    {% for key, grafico in graficos.items() %}
-    <div class="card-page dashboard-card">
-        <div class="container-title-img">
-            <p class="title-img">{{grafico['title_image']}}</p>
-        </div>
-        <div class="container-image">
-            <img class="dashboard-image" src="{{ url_for( 'static', filename='/assets/img/dataproduct/' + grafico['name_image'] ) }}" alt="{{grafico['title_image']}}" srcset="">
-        </div>
+{% for key, grafico in graficos.items() %}
+<div class="card-page dashboard-card">
+    <div class="container-title-img">
+        <p class="title-img">{{grafico['title_image']}}</p>
     </div>
-    {% endfor %}
-    <div id="popup-image">
-        <div class="container-title-img">
-            <p id="popup-title-img" class="title-img"></p>
-        </div>
-        <div>
-            <img src="" alt="" id="selected-image">
-        </div>
+    <div class="container-image">
+        <img class="dashboard-image"
+            src="{{ url_for( 'static', filename='/assets/img/dataproduct/' + grafico['name_image'] ) }}"
+            alt="{{grafico['title_image']}}" srcset="">
     </div>
+</div>
+{% endfor %}
+<div id="popup-image">
+    <div class="container-title-img">
+        <p id="popup-title-img" class="title-img"></p>
+    </div>
+    <div>
+        <img src="" alt="" id="selected-image">
+    </div>
+</div>
 
 {% endblock %}
 {% block behaviour %}
-    <script src="{{ url_for( 'static', filename='/js/iseverity/dashboards-images.js' ) }}"></script>
+<script src="{{ url_for( 'static', filename='/js/iseverity/dashboards-images.js' ) }}"></script>
 {% endblock %}
