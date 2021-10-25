@@ -290,3 +290,38 @@ def get_graph_seguridad(url):
     #-plt.show()
     plt.savefig(URL_IMG_STORE+'CantPersonaUsoCinturon')
     plt.close()
+
+def get_graph_localidades(url):
+    # Initialize urls
+    URL_PREPARED_DATA = url + URL_PREPARED_DATA_BASIC
+    URL_IMG_STORE = url + URL_IMG_STORE_BASIC
+
+    # Extract data from csv file
+    dfsiniestros = pd.read_csv(URL_PREPARED_DATA+'/'+FILE_NAME)
+   
+    # Convert datatypes of object to datetime or str
+    dfsiniestros['FECHA'] = dfsiniestros['FECHA'].astype('datetime64[ns]')
+    dfsiniestros['DIRECCION'] = dfsiniestros['DIRECCION'].astype('str')
+
+    ################################################################################################################################################
+    ################################################## Genera la imagen: CantSinByLocalInAnios.png ###################################################
+    ################################################################################################################################################
+
+    g17ploc = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2017]['FECHA'].dt.year,'LOCALIDAD'])['LOCALIDAD'].count().reset_index(name='CANTIDAD')
+    g18ploc = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2018]['FECHA'].dt.year,'LOCALIDAD'])['LOCALIDAD'].count().reset_index(name='CANTIDAD')
+    g19ploc = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2019]['FECHA'].dt.year,'LOCALIDAD'])['LOCALIDAD'].count().reset_index(name='CANTIDAD')
+    localidades = np.array(['KENNEDY','USAQUEN','ENGATIVA','SUBA','FONTIBON','PUENTE ARANDA','CHAPINERO','BARRIOS UNIDOS','TEUSAQUILLO','BOSA','CIUDAD BOLIVAR','LOS MARTIRES','SANTA FE','TUNJUELITO','SAN CRISTOBAL','RAFAEL URIBE URIBE','ANTONIO NARIÑO','USME','CANDELARIA','SUMAPAZ'])
+
+    plt.figure(figsize=(15,12))
+    plt.plot(localidades,g17ploc['CANTIDAD'], 'r.-')
+    plt.plot(localidades,g18ploc['CANTIDAD'], 'g.-')
+    plt.plot(localidades,g19ploc['CANTIDAD'], 'b.-')
+    plt.xticks(rotation=40)
+    plt.legend([2017,2018,2019])
+    plt.xlabel('Localidades en Bogotá')
+    plt.ylabel('Cantidad de Siniestros.')
+    plt.title('Cantidad de Siniestros en Localidades por Años.')
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantSinByLocalInAnios')
+    plt.close()

@@ -52,7 +52,7 @@ def get_dashboard_localidades_data():
     graficos ={
           'Imagen 1': {
                'title_image': 'Cantidad siniestros viales por localidad en cada año.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'CantSinByLocalInAnios.png'
           },
           'Imagen 2': {
                'title_image': 'Mapa de calor de la ciudad de Bogota de la cantidad de siniestros viales por localidd.',
