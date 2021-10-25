@@ -413,3 +413,212 @@ def get_graph_tipo_horario(url):
     plt.savefig(URL_IMG_STORE+'ByHoraDiaria')
     plt.close()
 
+def get_graph_tipo_vehiculo(url):
+    # Initialize urls
+    URL_PREPARED_DATA = url + URL_PREPARED_DATA_BASIC
+    URL_IMG_STORE = url + URL_IMG_STORE_BASIC
+
+    # Extract data from csv file
+    dfsiniestros = pd.read_csv(URL_PREPARED_DATA+'/'+FILE_NAME)
+   
+    # Convert datatypes of object to datetime or str
+    dfsiniestros['FECHA'] = dfsiniestros['FECHA'].astype('datetime64[ns]')
+    dfsiniestros['DIRECCION'] = dfsiniestros['DIRECCION'].astype('str')
+
+    ################################################################################################################################################
+    ################################################ Genera la imagen: SinByModelVehiculByAnio.png #################################################
+    ################################################################################################################################################
+
+    gpve17 = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2017]['FECHA'].dt.year,'MODELOVEHICULO'])['MODELOVEHICULO'].count().reset_index(name='CANTIDAD')
+    gpve18 = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2018]['FECHA'].dt.year,'MODELOVEHICULO'])['MODELOVEHICULO'].count().reset_index(name='CANTIDAD')
+    gpve19 = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2019]['FECHA'].dt.year,'MODELOVEHICULO'])['MODELOVEHICULO'].count().reset_index(name='CANTIDAD')
+
+    plt.figure(figsize=(10,5))
+    plt.plot(gpve17['MODELOVEHICULO'], gpve17['CANTIDAD'], 'r-')
+    plt.plot(gpve18['MODELOVEHICULO'], gpve18['CANTIDAD'], 'g-')
+    plt.plot(gpve19['MODELOVEHICULO'], gpve19['CANTIDAD'], 'b-')
+    plt.legend(['Año 2017','Año 2018','Año 2019'], fontsize=15)
+    plt.ylabel('Cantidad de Siniestros.', fontsize=15)
+    plt.xlabel('Modelo de Vehiculo.', fontsize=15)
+    plt.title('Cantidad de Siniestros por modelo de vehiculo en cada año.', fontsize=15)
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'SinByModelVehiculByAnio')
+    plt.close()
+
+    ################################################################################################################################################
+    ################################################ Genera la imagen: CantSinByClassVehif2017.png #################################################
+    ################################################################################################################################################
+
+    # Analisis de clase de vehiculo
+    # Cantidad de clase de vehiculos involucrados en un siniestro por mes 
+
+    gpmescar17 = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2017]['FECHA'].dt.month,'CLASEVEHICULO' ])['CLASEVEHICULO'].count().reset_index(name='CANTIDAD')
+    gpmescar18 = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2018]['FECHA'].dt.month,'CLASEVEHICULO' ])['CLASEVEHICULO'].count().reset_index(name='CANTIDAD')
+    gpmescar19 = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2019]['FECHA'].dt.month,'CLASEVEHICULO' ])['CLASEVEHICULO'].count().reset_index(name='CANTIDAD')
+
+    #año 2017
+
+    #Automovil
+    automovil17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 1]
+    #Motocicleta
+    motocicleta17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 2]
+    #Caomioneta
+    camioneta17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 3]
+    #Bus
+    bus17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 4]
+    #Furgon
+    furgon17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 5]
+    #Campero
+    campero17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 6]
+    #Microbus
+    mircrobus17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 7]
+    #Buseta
+    buseta17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 8]
+    #Tractocamion
+    tractocamion17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 9]
+    #Volqueta
+    volqueta17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 10]
+    #Bicicleta
+    bicicleta17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 11]
+    #Bicitaxi
+    bicitaxi17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 12]
+    #Motociclo
+    motociclo17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 13]
+    #Tractocamion
+    #tractocamion17 = gpmescar17[gpmescar17['CLASEVEHICULO']== 14]
+    #Cuatrimoto
+    cuatrimoto17 =  gpmescar17[gpmescar17['CLASEVEHICULO']== 15]
+
+    plt.figure(figsize=(15,10))
+    mes = np.array(['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'])
+    plt.plot(mes, automovil17['CANTIDAD'],color='#FF5733', marker = 'o', markerfacecolor = '#FF5733')
+    plt.plot(mes, motocicleta17['CANTIDAD'], color='#8E44AD', marker = 'o', markerfacecolor = '#8E44AD')
+    plt.plot(mes, camioneta17['CANTIDAD'], color='#3498DB', marker = 'o', markerfacecolor = '#3498DB')
+    plt.plot(mes, bus17['CANTIDAD'], color='#16A085', marker = 'o', markerfacecolor = '#16A085')
+    plt.plot(mes, furgon17['CANTIDAD'], color='#F1C40F', marker = 'o', markerfacecolor = '#F1C40F')
+    plt.plot(mes, campero17['CANTIDAD'], color='#E67E22', marker = 'o', markerfacecolor = '#E67E22')
+    plt.plot(mes, buseta17['CANTIDAD'], color='#34495E', marker = 'o', markerfacecolor = '#34495E')
+    plt.plot(mes, volqueta17['CANTIDAD'], color='#FF00FF', marker = 'o', markerfacecolor = '#FF00FF')
+    plt.plot(mes, bicicleta17['CANTIDAD'], color='#00FFFF', marker = 'o', markerfacecolor = '#00FFFF')
+    plt.legend(['Automovil','Moto','Camioneta','Bus','Furgon','Campero','Buseta','Volqueta','Bicicleta'], fontsize = 10)
+    plt.xlabel('Meses del año', fontsize = 15)
+    plt.ylabel('Cantidad de Siniestros.', fontsize = 15)
+    plt.title('Cantidad de Siniestros por Clase de Vehiculo en el Año 2017.')
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantSinByClassVehif2017')
+    plt.close()
+
+    ################################################################################################################################################
+    ################################################ Genera la imagen: CantSinByClassVehif2018.png #################################################
+    ################################################################################################################################################
+
+    #año 2018
+
+    #Automovil
+    automovil18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 1]
+    #Motocicleta
+    motocicleta18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 2]
+    #Caomioneta
+    camioneta18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 3]
+    #Bus
+    bus18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 4]
+    #Furgon
+    furgon18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 5]
+    #Campero
+    campero18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 6]
+    #Microbus
+    mircrobus18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 7]
+    #Buseta
+    buseta18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 8]
+    #Tractocamion
+    #tractocamion18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 9]
+    #Volqueta
+    volqueta18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 10]
+    #Bicicleta
+    bicicleta18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 11]
+    #Bicitaxi
+    #bicitaxi18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 12]
+    #Motociclo
+    #motociclo18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 13
+    #Tractocamion
+    tractocamion18 = gpmescar18[gpmescar18['CLASEVEHICULO']== 14]
+    #Cuatrimoto
+    cuatrimoto18 =  gpmescar18[gpmescar18['CLASEVEHICULO']== 15]
+
+    plt.figure(figsize=(15,10))
+    mes = np.array(['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'])
+    plt.plot(mes, automovil18['CANTIDAD'],color='#FF5733', marker = 'o', markerfacecolor = '#FF5733')
+    plt.plot(mes, motocicleta18['CANTIDAD'], color='#8E44AD', marker = 'o', markerfacecolor = '#8E44AD')
+    plt.plot(mes, camioneta18['CANTIDAD'], color='#3498DB', marker = 'o', markerfacecolor = '#3498DB')
+    plt.plot(mes, bus18['CANTIDAD'], color='#16A085', marker = 'o', markerfacecolor = '#16A085')
+    plt.plot(mes, furgon18['CANTIDAD'], color='#F1C40F', marker = 'o', markerfacecolor = '#F1C40F')
+    plt.plot(mes, campero18['CANTIDAD'], color='#E67E22', marker = 'o', markerfacecolor = '#E67E22')
+    plt.plot(mes, buseta18['CANTIDAD'], color='#34495E', marker = 'o', markerfacecolor = '#34495E')
+    plt.plot(mes, volqueta18['CANTIDAD'], color='#FF00FF', marker = 'o', markerfacecolor = '#FF00FF')
+    plt.plot(mes, bicicleta18['CANTIDAD'], color='#00FFFF', marker = 'o', markerfacecolor = '#00FFFF')
+    plt.legend(['Automovil','Moto','Camioneta','Bus','Furgon','Campero','Buseta','Volqueta','Bicicleta'], fontsize = 10)
+    plt.xlabel('Meses del año', fontsize = 15)
+    plt.ylabel('Cantidad de Siniestros.', fontsize = 15)
+    plt.title('Cantidad de Siniestros por Clase de Vehiculo en el Año 2018')
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantSinByClassVehif2018')
+    plt.close()
+
+    ################################################################################################################################################
+    ################################################ Genera la imagen: CantSinByClassVehif2019.png #################################################
+    ################################################################################################################################################
+
+    #año 2019
+
+    #Automovil
+    automovil19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 1]
+    #Motocicleta
+    motocicleta19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 2]
+    #Caomioneta
+    camioneta19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 3]
+    #Bus
+    bus19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 4]
+    #Furgon
+    furgon19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 5]
+    #Campero
+    campero19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 6]
+    #Microbus
+    mircrobus19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 7]
+    #Buseta
+    buseta19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 8]
+    #Tractocamio
+    #tractocamion19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 9]
+    #Volqueta
+    volqueta19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 10]
+    #Bicicleta
+    bicicleta19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 11]
+    #Bicitaxi
+    #bicitaxi19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 12]
+    #Motociclo
+    #motociclo19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 13
+    #Tractocamion
+    tractocamion19 = gpmescar19[gpmescar19['CLASEVEHICULO']== 14]
+    #Cuatrimoto
+    cuatrimoto19 =  gpmescar19[gpmescar19['CLASEVEHICULO']== 15]
+
+    plt.figure(figsize=(15,10))
+    mes = np.array(['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'])
+    plt.plot(mes, automovil19['CANTIDAD'],color='#FF5733', marker = 'o', markerfacecolor = '#FF5733')
+    plt.plot(mes, motocicleta19['CANTIDAD'], color='#8E44AD', marker = 'o', markerfacecolor = '#8E44AD')
+    plt.plot(mes, camioneta19['CANTIDAD'], color='#3498DB', marker = 'o', markerfacecolor = '#3498DB')
+    plt.plot(mes, bus19['CANTIDAD'], color='#16A085', marker = 'o', markerfacecolor = '#16A085')
+    plt.plot(mes, furgon19['CANTIDAD'], color='#F1C40F', marker = 'o', markerfacecolor = '#F1C40F')
+    plt.plot(mes, campero19['CANTIDAD'], color='#E67E22', marker = 'o', markerfacecolor = '#E67E22')
+    plt.plot(mes, buseta19['CANTIDAD'], color='#34495E', marker = 'o', markerfacecolor = '#34495E')
+    plt.plot(mes, volqueta19['CANTIDAD'], color='#FF00FF', marker = 'o', markerfacecolor = '#FF00FF')
+    plt.plot(mes, bicicleta19['CANTIDAD'], color='#00FFFF', marker = 'o', markerfacecolor = '#00FFFF')
+    plt.legend(['Automovil','Moto','Camioneta','Bus','Furgon','Campero','Buseta','Volqueta','Bicicleta'], fontsize = 10)
+    plt.xlabel('Meses del año', fontsize = 15)
+    plt.ylabel('Cantidad de Siniestros.', fontsize = 15)
+    plt.title('Cantidad de Siniestros por Clase de Vehiculo en el Año 2019')
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantSinByClassVehif2019')
+    plt.close()
