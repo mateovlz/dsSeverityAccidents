@@ -622,3 +622,92 @@ def get_graph_tipo_vehiculo(url):
     #-plt.show()
     plt.savefig(URL_IMG_STORE+'CantSinByClassVehif2019')
     plt.close()
+
+def get_graph_tipo_responsabilidad(url):
+    # Initialize urls
+    URL_PREPARED_DATA = url + URL_PREPARED_DATA_BASIC
+    URL_IMG_STORE = url + URL_IMG_STORE_BASIC
+
+    # Extract data from csv file
+    dfsiniestros = pd.read_csv(URL_PREPARED_DATA+'/'+FILE_NAME)
+   
+    # Convert datatypes of object to datetime or str
+    dfsiniestros['FECHA'] = dfsiniestros['FECHA'].astype('datetime64[ns]')
+    dfsiniestros['DIRECCION'] = dfsiniestros['DIRECCION'].astype('str')
+
+    ################################################################################################################################################
+    ################################################ Genera la imagen: CantPersonasTieneSeguro.png #################################################
+    ################################################################################################################################################
+
+    # Analisis de portabalidad seguro 
+
+    gpse = dfsiniestros.groupby(['SEXO', 'POSSESEGURORESPONSABILIDAD'])['POSSESEGURORESPONSABILIDAD'].count().reset_index(name='CANTIDAD')
+
+    gpseMa = gpse[gpse['SEXO'] == 1]
+    gpseFe = gpse[gpse['SEXO'] == 2]
+
+    plt.figure(figsize=(9,4))
+    lstSexo = np.array(['MASCULINO','FEMENINO'])
+    barWidth = 0.25
+    r1 = np.arange(len(lstSexo))
+    r2 = [x + barWidth for x in r1]
+    r3 = [x + barWidth for x in r2]
+    plt.bar(r1,gpseMa['CANTIDAD'], width=barWidth, color='#FF616D' )
+    plt.bar(r2,gpseFe['CANTIDAD'], width=barWidth, color='#053742' )
+    lstcant = gpseMa['CANTIDAD'].to_numpy()
+    for i in range(len(lstcant)):
+        plt.annotate(lstcant[i], (i-0.07, 900+lstcant[i] ))
+        
+    lstcantFe = gpseFe['CANTIDAD'].to_numpy()    
+    for i in range(len(lstcantFe)):
+        plt.annotate(lstcantFe[i], (i+0.22, 900+lstcantFe[i]))
+    plt.legend(['CON SEGURO','SIN SEGURO'])
+    plt.xlabel('Genero (SEXO)', fontweight='bold')
+    plt.xticks([r + barWidth-0.125 for r in range(len(lstSexo))], lstSexo)
+    plt.ylabel('Cantidad Personas')
+    plt.title('Cantidad de Personas Involucradas en Siniestros por portabilidad de seguro de responsabilidad.')
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantPersonasTieneSeguro')
+    plt.close()
+
+    ################################################################################################################################################
+    ################################################ Genera la imagen: CantPersSinEmbriaguez.png #################################################
+    ################################################################################################################################################
+
+    gphra = dfsiniestros.groupby('HORA_PROCESADA')['HORA_PROCESADA'].count().reset_index(name='CANTIDAD')
+    lsthora = gphra['HORA_PROCESADA'].to_numpy()
+    # Por embriaguez
+
+    gphr = dfsiniestros.groupby(['HORA_PROCESADA','CON_EMBRIAGUEZ'])['HORA_PROCESADA'].count().reset_index(name='CANTIDAD')
+    gphrce = gphr[gphr['CON_EMBRIAGUEZ'] == 1]
+    gphrcse = gphr[gphr['CON_EMBRIAGUEZ'] == 2]
+
+    # Sin Embriaguez
+    plt.figure(figsize=(19,5))
+    plt.plot(gphrcse['HORA_PROCESADA'],gphrcse['CANTIDAD'], 'bo-')
+    plt.legend(['SIN EMBRIAGUEZ'])
+    plt.ylabel('Cantidad Siniestros.', fontsize=15)
+    plt.xlabel('Hora del dia.', fontsize=15)
+    plt.title('Cantidad de Siniestros por hora sin embriaguez.', fontsize=15)
+    plt.xticks(lsthora)
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantPersSinEmbriaguez')
+    plt.close()
+
+    ################################################################################################################################################
+    ################################################ Genera la imagen: CantPersConEmbriaguez.png #################################################
+    ################################################################################################################################################
+
+    #Embriaguez
+    plt.figure(figsize=(19,5))
+    plt.plot(gphrce['HORA_PROCESADA'],gphrce['CANTIDAD'], 'go-')
+    plt.legend(['CON EMBRIAGUEZ'])
+    plt.ylabel('Cantidad Siniestros.', fontsize=15)
+    plt.xlabel('Hora del dia.', fontsize=15)
+    plt.title('Cantidad de Siniestros por hora con embriaguez.', fontsize=15)
+    plt.grid()
+    plt.xticks(lsthora)
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantPersConEmbriaguez')
+    plt.close()

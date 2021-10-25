@@ -106,15 +106,15 @@ def get_dashboard_responsabilidad_data():
     graficos ={
           'Imagen 1': {
                'title_image': 'Cantidad Personas Involucradas en siniestros viales que portan Seguro de Responsabilidad.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'CantPersonasTieneSeguro.png'
           },
           'Imagen 2': {
                'title_image': 'Cantidad Personas Involucradas en siniestros viales por hora del dia sin estado de embriaguez.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'CantPersSinEmbriaguez.png'
           },
           'Imagen 3': {
                'title_image': 'Cantidad Personas Involucradas en siniestros viales por hora del dia con estado de embriaguez.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'CantPersConEmbriaguez.png'
           },
      }
     warningDescription = 'En este tablero se podra observar todos los graficos y resultados generados a traves del producto de datos en los siniestros viales por tipo de responsabilidad social.(Para observar los graficos de mejor manera dar click en el grafico)'
