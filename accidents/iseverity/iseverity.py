@@ -11,6 +11,7 @@ from ..dataproduct.dataproductgraphs import (
      get_graph_tipo_responsabilidad
 )
 from .isverityutils import send_email
+from ..dataproduct.dataproductml import get_prediction
 import os
 
 iseverityBp = Blueprint(
@@ -108,18 +109,20 @@ def dashboard_gravedad():
                localidad, hora_procesada, mes
           ]
           print(vars)
-          # Get absolute path to use model pickle file
-          #url = os.path.join(current_app.root_path)
-          #ml.start_grphing(url)
-          #result = ml.get_prediction(vars,'clf', url + '/dataproduct/ml/') if edadprocesada else None
-          resultMl = 1
-          severits = {
-               1: 'Ilesos',
-               2: 'Herido Valorado',
-               3: 'Herido Hospitalizaco ',
-               4: 'Muerto'
-          }     
-          severity = severits.get(resultMl,'No existe')
+          try:
+               # Get absolute path to use model pickle file
+               URL_ROOT=os.path.join(current_app.root_path)
+               resultMl = get_prediction(vars,'dt', URL_ROOT + '/dataproduct/ml/') if edadprocesada else None
+               severits = {
+                    1: 'Ilesos',
+                    2: 'Herido Valorado',
+                    3: 'Herido Hospitalizaco ',
+                    4: 'Muerto'
+               }   
+               severity = severits.get(resultMl,'No existe')
+               set_history_log(nombre, severity, 'CHROME')
+          except Exception as e:
+                 print(f'ERROR PREDICTION - Error extracting prediction result from ml {e}')
           return render_template("dashboard.html",result=severity, prediction=True, warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
      return render_template("dashboard.html",result=result, prediction=True, warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
@@ -247,7 +250,6 @@ def conf_admin_historial_uso():
      titleHead="Historial de Uso"
      titlePage="Configuración - Administración"
      dataTable=None
-     #set_source_log('Prueba Inserción', 'Text', 'Ejecucion')
      data=get_all_history_audit_log()
      if data == 'ERROR - Data Not Found':
           dataTable=False
