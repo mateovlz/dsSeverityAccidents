@@ -112,7 +112,7 @@ def dashboard_gravedad():
           try:
                # Get absolute path to use model pickle file
                URL_ROOT=os.path.join(current_app.root_path)
-               resultMl = get_prediction(vars,'dt', URL_ROOT + '/dataproduct/ml/') if edadprocesada else None
+               resultMl = get_prediction(vars,'clf', URL_ROOT + '/dataproduct/ml/') if edadprocesada else None
                severits = {
                     1: 'Ilesos',
                     2: 'Herido Valorado',

@@ -3,8 +3,12 @@ import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pickle
+from sklearn.svm import SVC as SVC
+from sklearn.ensemble import RandomForestClassifier 
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.tree import DecisionTreeClassifier
 
 
 
@@ -14,11 +18,15 @@ def get_prediction(vars, model, url):
     if model == 'dt':
         MODEL = 'model_dt.pickle'
     print("Cargando el modelo")
+    result = None
     # load the model from disk
-    loaded_model = pickle.load(open(url+MODEL, 'rb'))
-    #result = loaded_model.score(X_test, Y_test)
-    print("Generando resultado del modelo")
-    result = loaded_model.predict([vars])
+    try:
+        loaded_model = pickle.load(open(url+MODEL, 'rb'))
+        #result = loaded_model.score(X_test, Y_test)
+        print("Generando resultado del modelo")
+        result = loaded_model.predict([vars])
+    except Exception as e:
+        print(f"ERROR MODEL - Error loading ML {e}")
     return result[0]
 
 def start_grphing(url):
