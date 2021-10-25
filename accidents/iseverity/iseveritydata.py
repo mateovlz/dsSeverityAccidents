@@ -22,27 +22,27 @@ def get_dashboard_gravedad_data():
     graficos ={
           'Imagen 1': {
                'title_image': 'Cantidad siniestros viales por gravedad.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'SiniestrosGravedad.png'
           },
           'Imagen 2': {
                'title_image': 'Cantidad siniestros viales por gravedad en cada año. ',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'SiniestrosGravedadByAnio.png'
           },
           'Imagen 3': {
                'title_image': 'Cantidad Personas de siniestros viales por hora del dia con gravedad Muertos.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'SiniGravedadByHoraIlesos.png'
           },
           'Imagen 4': {
                'title_image': 'Cantidad Personas de siniestros viales por hora del dia con gravedad Herido hospitalizado.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'SiniGravedadByHoraValorado.png'
           },
           'Imagen 5': {
                'title_image': 'Cantidad Personas de siniestros viales por hora del dia con gravedad Herido valorado.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'SiniGravedadByHoraHospitalizado.png'
           },
           'Imagen 6': {
                'title_image': 'Cantidad Personas de siniestros viales por hora del dia con gravedad Herido ilesos. ',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'SiniGravedadByHoraMuertos.png'
           },
      }
     warningDescription = 'En este tablero se podra observar todos los graficos y resultados generados a traves del producto de datos en de los siniestros viales por localidades.(Para observar los graficos de mejor manera dar click en el grafico)'

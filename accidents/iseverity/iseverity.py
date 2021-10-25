@@ -6,6 +6,7 @@ from .iseveritydata import (
      get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data, get_contacto_message, get_all_history_audit_log,
      get_all_execution_audit_log, get_all_sources_audit_log, set_source_log, set_execution_log, set_history_log
 )
+from ..dataproduct.dataproductgraphs import get_graph_gravedad
 from .isverityutils import send_email
 import os
 
@@ -68,6 +69,12 @@ def dashboard_gravedad():
      footer=True
      titleHead="Gravedad"
      titlePage=DASHBOARDS_LABEL+"Gravedad"
+     # Generate Graphs
+     try:
+          URL_ROOT=os.path.join(current_app.root_path)
+          get_graph_gravedad(URL_ROOT)
+     except Exception as e:
+          print(f'ERROR GRAPH - Error generating and saving the severity graphs {e}')
      # Get the data for the graphs of the dashboard
      graficos, warningDescription = get_dashboard_gravedad_data()
      if request.method == 'GET':
