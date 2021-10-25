@@ -13,7 +13,7 @@
                     <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/historialuso">Historial de Uso</a></li>
                 </div>
                 <div class="container-confi-opcion">
-                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/ejecucionprocesos">Historial de Ejecución de Procesos</a></li>
+                    <li class="option-list-confi"><strong><a class="confi-text-nemu" href="/ISeverity/conf-admin/ejecucionprocesos">Historial de Ejecución de Procesos</a></strong></li>
                 </div>
             </div>
         </div>
@@ -26,10 +26,17 @@
             <div class="confi-text-description">
                 <P>Cada vez que agreges una fuente nueva o se ejecuquete este procespo para reentrenar el module genera una trazabilidad.</P>
             </div>
-            <div class="flex-row">
-                <div class="container-btn-send">
-                    <input class="btn-send-execute" type="submit" value="Ejecutar" form="contact-form" onclick="console.log('Funciona')">
-                </div>
+            <div>
+                <form action="" method="POST">
+                    <div class="tooltip">
+                        <p class="title-input">Nombre:</p>
+                        <input class="input-label-contacto input-proceso" id="nombre" name="nombre" type="text">
+                        <span class="tooltip-text">Nombre</span>
+                    </div>
+                    <div class="container-btn-send">
+                        <input class="btn-send-execute" type="submit" value="Ejecutar">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -41,20 +48,25 @@
         <div class ="divider"></div>
         <table>
             <tr class="confi-text-head-table" >
-                <th class="col30">Nombre</th>
-                <th>Fecha</th>
-                <th>Estado</th>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Santiago leon</td>
-                <td>2021-10-12 20:19:45</td>
-                <td>Finalizado</td>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Mateo velez</td>
-                <td>2021-10-12 20:19:45</td>
-                <td>Sin resultado</td>
-              </tr>
+                <th>Id:</th>
+                <th>Nombre:</th>
+                <th>Estado:</th>
+                <th>Fecha:</th>
+            </tr>
+            {% if dataTable %}
+                {% for row in dataTable%}
+                    <tr class="confi-text-body-table">
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr class="confi-text-body-table">
+                    <td>No hay Datos Disponibles</td>
+                </tr>
+            {% endif %}
           </table>
       </div>
     </div>       

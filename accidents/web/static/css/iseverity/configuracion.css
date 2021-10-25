@@ -37,7 +37,7 @@
 }
 
 .confi-text-nemu{
-    font-family: Poppins-Light;
+    font-family: Poppins-Medium;
     font-size: 20px;
     margin: 0px;
     color: #000;
@@ -66,7 +66,7 @@
     background-color: #FF7600;
     height: 3px;
     width: 977px; 
-
+    margin-bottom: 10px;
 }
 
 .confi-text-head-table{
@@ -137,7 +137,9 @@
     margin: 0px;
 }
 
-
+.input-proceso{
+    margin-left: 22px;
+}
 
 
 /******************************************************
@@ -155,7 +157,7 @@
     font-size: 17px;
     cursor: pointer;
     padding: 1px 6px 1px 6px ;
-    margin: 20px 0px 19px 108px;
+    margin: 20px 0px 19px 0px;
     padding: 5px 7px 26px 7px; 
 }
 

@@ -7,7 +7,7 @@
         <div class="container-help">
             <div class="flex-row">
                 <div class="container-confi-opcion">
-                    <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/fuentes">Fuentes</a></li>
+                    <li class="option-list-confi"><strong><a class="confi-text-nemu" href="/ISeverity/conf-admin/fuentes">Fuentes</a></strong></li>
                 </div>
                 <div class="container-confi-opcion">
                     <li class="option-list-confi"><a class="confi-text-nemu" href="/ISeverity/conf-admin/historialuso">Historial de Uso</a></li>
@@ -26,14 +26,24 @@
             <div class="confi-text-description">
                 <P>Puede argegar o eleimanr fuentes de infromacion para el producto de datos que realizara la preddiccion de tu siniestro.</P>
             </div>
-            <div class="flex-row">
-                <p class="title-input">Nombre:</p>
-                <input class="input-label-contacto" id="nombre" name="nombre" type="text">
-                <p class="title-input">Archivo:</p>
-                <input class="input-label-contacto" id="archivo" name="archivo" type="text">
-                <div class="container-btn-send">
-                    <input class="btn-send-load" type="submit" value="Cargar" form="contact-form" onclick="console.log('Funciona')">
-                </div>
+            <div>
+                <form action="" method="POST" enctype = "multipart/form-data">
+                    <div class="flex-row">
+                        <div class="tooltip">
+                            <p class="title-input">Nombre:</p>
+                            <input class="input-label-contacto input-proceso" id="nombre" name="nombre" type="text">
+                            <span class="tooltip-text">Nombre</span>
+                        </div>
+                        <div class="tooltip">
+                            <p class="title-input">Fuente:</p>
+                            <input class="input-label-contacto input-proceso" id="fuente" name="fuente" type="file">
+                            <span class="tooltip-text">Fuente</span>
+                        </div>
+                    </div>
+                    <div class="container-btn-send">
+                        <input class="btn-send-load" type="submit" value="Cargar">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -45,25 +55,27 @@
         <div class ="divider"></div>
         <table>
             <tr class="confi-text-head-table" >
-                <th class="col30">Nombre</th>
-                <th>Fecha</th>
-                <th>Estado</th>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Anuario accidentalidad 2017</td>
-                <td>2021-10-12 20:19:45</td>
-                <td>Activo</td>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Anuario accidentalidad 2018</td>
-                <td>2021-10-12 20:19:45</td>
-                <td>Activo</td>
-              </tr>
-              <tr class="confi-text-body-table">
-                <td>Anuario accidentalidad 2019</td>
-                <td>2021-10-12 20:19:45</td>
-                <td>Activo</td>
-              </tr>
+                <th>Id:</th>
+                <th>Nombre Archivo:</th>
+                <th>Extension:</th>
+                <th>Estado:</th>
+                <th>Fecha:</th>
+            </tr>
+            {% if dataTable %}
+                {% for row in dataTable%}
+                    <tr class="confi-text-body-table">
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr class="confi-text-body-table">
+                    <td>No hay Datos Disponibles</td>
+                </tr>
+            {% endif %}
           </table>
       </div>
     </div>       
