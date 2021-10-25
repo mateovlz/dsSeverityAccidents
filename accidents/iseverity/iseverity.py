@@ -6,6 +6,10 @@ from .iseveritydata import (
      get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data, get_contacto_message, get_all_history_audit_log,
      get_all_execution_audit_log, get_all_sources_audit_log, set_source_log, set_execution_log, set_history_log
 )
+from ..dataproduct.dataproductgraphs import (
+     get_graph_gravedad, get_graph_seguridad, get_graph_localidades, get_graph_tipo_horario, get_graph_tipo_vehiculo,
+     get_graph_tipo_responsabilidad
+)
 from .isverityutils import send_email
 import os
 
@@ -58,6 +62,12 @@ def dashboard_seguridad():
      footer=True
      titleHead="Seguridad"
      titlePage=DASHBOARDS_LABEL+"Tipo de Elementos de Seguridad"
+     # Generate Graphs
+     try:
+          URL_ROOT=os.path.join(current_app.root_path)
+          get_graph_seguridad(URL_ROOT)
+     except Exception as e:
+          print(f'ERROR GRAPH - Error generating and saving the severity graphs {e}')
      # Get the data for the graphs of the dashboard
      graficos, warningDescription = get_dashboard_seguridad_data()
      return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
@@ -68,6 +78,12 @@ def dashboard_gravedad():
      footer=True
      titleHead="Gravedad"
      titlePage=DASHBOARDS_LABEL+"Gravedad"
+     # Generate Graphs
+     try:
+          URL_ROOT=os.path.join(current_app.root_path)
+          get_graph_gravedad(URL_ROOT)
+     except Exception as e:
+          print(f'ERROR GRAPH - Error generating and saving the severity graphs {e}')
      # Get the data for the graphs of the dashboard
      graficos, warningDescription = get_dashboard_gravedad_data()
      if request.method == 'GET':
@@ -113,6 +129,12 @@ def dashboard_localidades():
      footer=True
      titleHead="Localidades"
      titlePage=DASHBOARDS_LABEL+"Localidades"
+     # Generate Graphs
+     try:
+          URL_ROOT=os.path.join(current_app.root_path)
+          get_graph_localidades(URL_ROOT)
+     except Exception as e:
+          print(f'ERROR GRAPH - Error generating and saving the severity graphs {e}')
      # Get the data for the graphs of the dashboard
      graficos, warningDescription = get_dashboard_localidades_data()
      return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
@@ -123,6 +145,12 @@ def dashboard_tipo_horario():
      footer=True
      titleHead="Tipo de Horario"
      titlePage=DASHBOARDS_LABEL+"Tipo de Horario"
+     # Generate Graphs
+     try:
+          URL_ROOT=os.path.join(current_app.root_path)
+          get_graph_tipo_horario(URL_ROOT)
+     except Exception as e:
+          print(f'ERROR GRAPH - Error generating and saving the severity graphs {e}')
      # Get the data for the graphs of the dashboard
      graficos, warningDescription = get_dashboard_tipo_horario_data()
      return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
@@ -133,6 +161,12 @@ def dashboard_tipo_vehiculo():
      footer=True
      titleHead="Tipo de Vehiculo"
      titlePage=DASHBOARDS_LABEL+"Tipo de Vehiculo"
+     # Generate Graphs
+     try:
+          URL_ROOT=os.path.join(current_app.root_path)
+          get_graph_tipo_vehiculo(URL_ROOT)
+     except Exception as e:
+          print(f'ERROR GRAPH - Error generating and saving the severity graphs {e}')
      # Get the data for the graphs of the dashboard
      graficos, warningDescription = get_dashboard_tipo_vehiculo_data()
      return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
@@ -143,6 +177,12 @@ def dashboard_responsabilidad():
      footer=True
      titleHead="Responsabilidad"
      titlePage=DASHBOARDS_LABEL+"Tipo de Reponsabilidad Social"
+     # Generate Graphs
+     try:
+          URL_ROOT=os.path.join(current_app.root_path)
+          get_graph_tipo_responsabilidad(URL_ROOT)
+     except Exception as e:
+          print(f'ERROR GRAPH - Error generating and saving the severity graphs {e}')
      # Get the data for the graphs of the dashboard
      graficos, warningDescription = get_dashboard_responsabilidad_data()
      return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)

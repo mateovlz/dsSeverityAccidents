@@ -69,16 +69,34 @@
     margin-bottom: 10px;
 }
 
-.confi-text-head-table{
-    font-family: Poppins-Semibold;
-    font-size: 20px;
-    margin: 0px;
+.config-table{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    margin-bottom: 22px;
 }
-.confi-text-body-table{
-    color: #000;
-    font-family: Poppins-Light;
-    font-size: 20px;
+
+.config-tr-td-table:hover{
+    background-color: #FECE6F;
+    border: none;
+}
+
+.config-text-th{
+    font-family: Poppins-Semibold;
+    font-size: 18px;
     margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+.config-text-td{
+    color: #000000;
+    font-family: Poppins-Light;
+    font-size: 16px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
 }
 
 .option-list-confi{

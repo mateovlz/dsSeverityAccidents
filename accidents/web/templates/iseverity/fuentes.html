@@ -48,35 +48,37 @@
         </div>
     </div>
     <div class= "card-container-confi">
-      <div class="container-title-page">
-        <div class="confi-text-title">
-            <P>Fuentes</P>
-        </div>
-        <div class ="divider"></div>
-        <table>
-            <tr class="confi-text-head-table" >
-                <th>Id:</th>
-                <th>Nombre Archivo:</th>
-                <th>Extension:</th>
-                <th>Estado:</th>
-                <th>Fecha:</th>
-            </tr>
-            {% if dataTable %}
-                {% for row in dataTable%}
-                    <tr class="confi-text-body-table">
-                        <td>{{ row[0] }}</td>
-                        <td>{{ row[1] }}</td>
-                        <td>{{ row[2] }}</td>
-                        <td>{{ row[3] }}</td>
-                        <td>{{ row[4] }}</td>
+        <div class="container-title-page">
+            <div class="confi-text-title">
+                <P>Fuentes</P>
+            </div>
+            <div class ="divider"></div>
+            <div>
+                <table class="config-table">
+                    <tr>
+                        <th class="config-text-th">Id</th>
+                        <th class="config-text-th">Nombre Archivo</th>
+                        <th class="config-text-th">Extension</th>
+                        <th class="config-text-th">Estado</th>
+                        <th class="config-text-th">Fecha</th>
                     </tr>
-                {% endfor %}
-            {% else %}
-                <tr class="confi-text-body-table">
-                    <td>No hay Datos Disponibles</td>
-                </tr>
-            {% endif %}
-          </table>
+                    {% if dataTable %}
+                        {% for row in dataTable%}
+                            <tr class="config-tr-td-table">
+                                <td class="config-text-td">{{ row[0] }}</td>
+                                <td class="config-text-td">{{ row[1] }}</td>
+                                <td class="config-text-td">{{ row[2] }}</td>
+                                <td class="config-text-td">{{ row[3] }}</td>
+                                <td class="config-text-td">{{ row[4] }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td class="config-text-td">No hay Datos Disponibles</td>
+                        </tr>
+                    {% endif %}
+                </table>
+            </div>
       </div>
     </div>       
 {% endblock %}
