@@ -62,7 +62,7 @@ def dashboard_seguridad():
      graficos, warningDescription = get_dashboard_seguridad_data()
      return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
-@iseverityBp.route("/dashboards/gravedad")
+@iseverityBp.route("/dashboards/gravedad", methods=["GET", "POST"])
 def dashboard_gravedad():
      linkInicio=True
      footer=True
@@ -70,7 +70,42 @@ def dashboard_gravedad():
      titlePage=DASHBOARDS_LABEL+"Gravedad"
      # Get the data for the graphs of the dashboard
      graficos, warningDescription = get_dashboard_gravedad_data()
-     return render_template("dashboard.html", prediction=False, warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
+     if request.method == 'GET':
+          result = None
+     if request.method == 'POST':
+          nombre = request.form['nombre']
+          diaprocesado = request.form['dia']
+          edadprocesada = request.form['edad']
+          llevacinturon = request.form['cinturon']
+          llevachaleco = request.form['chaleco']
+          llevacasco = request.form['casco']
+          sexo = request.form['sexo']
+          modelovehiculo = request.form['modelo_vehiculo']
+          clasevehiculo = request.form['clase_vehiculo']
+          soat = request.form['soat']
+          embriaguez = request.form['embriaguez']
+          localidad = request.form['localidad']
+          hora_procesada = request.form['hora']
+          mes = request.form['mes']
+          vars = [diaprocesado, edadprocesada, llevacinturon, llevachaleco,
+               llevacasco, sexo, modelovehiculo, clasevehiculo, soat, embriaguez,
+               localidad, hora_procesada, mes
+          ]
+          print(vars)
+          # Get absolute path to use model pickle file
+          #url = os.path.join(current_app.root_path)
+          #ml.start_grphing(url)
+          #result = ml.get_prediction(vars,'clf', url + '/dataproduct/ml/') if edadprocesada else None
+          resultMl = 1
+          severits = {
+               1: 'Ilesos',
+               2: 'Herido Valorado',
+               3: 'Herido Hospitalizaco ',
+               4: 'Muerto'
+          }     
+          severity = severits.get(resultMl,'No existe')
+          return render_template("dashboard.html",result=severity, prediction=True, warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
+     return render_template("dashboard.html",result=result, prediction=True, warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
 
 @iseverityBp.route("/dashboards/localidades")
 def dashboard_localidades():
