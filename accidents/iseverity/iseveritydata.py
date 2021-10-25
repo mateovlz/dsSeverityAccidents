@@ -66,15 +66,15 @@ def get_dashboard_tipo_horario_data():
     graficos ={
           'Imagen 1': {
                'title_image': 'Cantidad Personas Involucradas en siniestros viales por mes en cada año.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'SinByMonthEachYear.png'
           },
           'Imagen 2': {
                'title_image': 'Cantidad Personas Involucradas en siniestros viales por Dia en una semana en cada año.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'SinByDiaInYear.png'
           },
           'Imagen 3': {
                'title_image': 'Cantidad Personas Involucradas en siniestros viales por Hora.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'ByHoraDiaria.png'
           },
      }
     warningDescription = 'En este tablero se podra observar todos los graficos y resultados generados a traves del producto en los siniestros viales por tipo de horario.(Para observar los graficos de mejor manera dar click en el grafico)'

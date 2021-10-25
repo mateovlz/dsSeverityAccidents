@@ -325,3 +325,91 @@ def get_graph_localidades(url):
     #-plt.show()
     plt.savefig(URL_IMG_STORE+'CantSinByLocalInAnios')
     plt.close()
+
+def get_graph_tipo_horario(url):
+    # Initialize urls
+    URL_PREPARED_DATA = url + URL_PREPARED_DATA_BASIC
+    URL_IMG_STORE = url + URL_IMG_STORE_BASIC
+
+    # Extract data from csv file
+    dfsiniestros = pd.read_csv(URL_PREPARED_DATA+'/'+FILE_NAME)
+   
+    # Convert datatypes of object to datetime or str
+    dfsiniestros['FECHA'] = dfsiniestros['FECHA'].astype('datetime64[ns]')
+    dfsiniestros['DIRECCION'] = dfsiniestros['DIRECCION'].astype('str')
+
+    ################################################################################################################################################
+    ################################################## Genera la imagen: SinByMonthEachYear.png ###################################################
+    ################################################################################################################################################
+
+    # Accidente por mes del año
+    #Analisis de personas involucradas en un isniestro por mes en cada año
+    gpmes17 = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2017]['FECHA'].dt.month])['EDAD_PROCESADA'].count().reset_index(name='CANTIDAD')
+    gpmes18 = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2018]['FECHA'].dt.month])['EDAD_PROCESADA'].count().reset_index(name='CANTIDAD')
+    gpmes19 = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2019]['FECHA'].dt.month])['EDAD_PROCESADA'].count().reset_index(name='CANTIDAD')
+
+    plt.figure(figsize=(15,7))
+    mes = np.array(['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'])
+    plt.plot(mes, gpmes17['CANTIDAD'], 'ro-')
+    plt.plot(mes, gpmes18['CANTIDAD'], 'go-')
+    plt.plot(mes, gpmes19['CANTIDAD'], 'bo-')
+    plt.legend(['Año: 2017','Año: 2018','Año: 2019'])
+    plt.xlabel('Meses del año.')
+    plt.ylabel('Cantidad de personas.')
+    plt.title('Cantidad de personas involucradas en siniestros por mes en cada año.')
+    plt.grid()
+    plt.savefig(URL_IMG_STORE+'SinByMonthEachYear')
+    #-plt.show()
+    plt.close()
+
+    ################################################################################################################################################
+    ################################################## Genera la imagen: SinByDiaInYear.png ###################################################
+    ################################################################################################################################################
+
+    #Cantidad de siniestros por dia de semana en cada año.
+    gp17dia = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2017]['FECHA'].dt.year, 'DIA_PROCESADO'])['DIA_PROCESADO'].count().reset_index(name='CANTIDAD')
+    gp18dia = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2018]['FECHA'].dt.year, 'DIA_PROCESADO'])['DIA_PROCESADO'].count().reset_index(name='CANTIDAD')
+    gp19dia = dfsiniestros.groupby([dfsiniestros[dfsiniestros['FECHA'].dt.year == 2019]['FECHA'].dt.year, 'DIA_PROCESADO'])['DIA_PROCESADO'].count().reset_index(name='CANTIDAD')
+
+
+    # In[183]:
+
+
+    plt.figure(figsize=(15,7))
+    dias = np.array(['LUNES','MARTES','MIERCOLES','JUEVES','VIERNES','SÁBADO','DOMINGO'])
+    plt.plot(dias, gp17dia['CANTIDAD'], 'r.-')
+    plt.plot(dias, gp18dia['CANTIDAD'], 'g.-')
+    plt.plot(dias, gp19dia['CANTIDAD'], 'b.-')
+    lstcant17 = gp17dia['CANTIDAD'].to_numpy()
+    lstcant18 = gp18dia['CANTIDAD'].to_numpy()
+    lstcant19 = gp19dia['CANTIDAD'].to_numpy()
+    for i in range(len(dias)):
+        plt.annotate(lstcant17[i], (i+0.10, lstcant17[i]), color='r')
+        plt.annotate(lstcant18[i], (i-0.25, 200+lstcant18[i]), color='g')
+        plt.annotate(lstcant19[i], (i-0.20, lstcant19[i]-100), color='b')
+    plt.xlabel('Dias de la Semana')
+    plt.ylabel('Cantidad de Siniestros')
+    plt.title('Cantidad de Siniestros por Dia de la Semana por Años.')
+    plt.legend([2017,2018,2019])
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'SinByDiaInYear')
+    plt.close()
+
+    ################################################################################################################################################
+    ################################################## Genera la imagen: ByHoraDiaria.png ###################################################
+    ################################################################################################################################################
+
+    gphra = dfsiniestros.groupby('HORA_PROCESADA')['HORA_PROCESADA'].count().reset_index(name='CANTIDAD')
+
+    plt.figure(figsize=(15,7))
+    lsthora = gphra['HORA_PROCESADA'].to_numpy()
+    plt.plot(gphra['HORA_PROCESADA'],gphra['CANTIDAD'], 'ro-')
+    plt.ylabel('Cantidad Siniestros.', fontsize=15)
+    plt.xlabel('Hora del dia.', fontsize=15)
+    plt.title('Cantidad de Siniestros por hora.', fontsize=15)
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'ByHoraDiaria')
+    plt.close()
+
