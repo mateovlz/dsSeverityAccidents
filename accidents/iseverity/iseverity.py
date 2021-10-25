@@ -6,7 +6,9 @@ from .iseveritydata import (
      get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data, get_contacto_message, get_all_history_audit_log,
      get_all_execution_audit_log, get_all_sources_audit_log, set_source_log, set_execution_log, set_history_log
 )
-from ..dataproduct.dataproductgraphs import get_graph_gravedad
+from ..dataproduct.dataproductgraphs import (
+     get_graph_gravedad, get_graph_seguridad
+)
 from .isverityutils import send_email
 import os
 
@@ -59,6 +61,12 @@ def dashboard_seguridad():
      footer=True
      titleHead="Seguridad"
      titlePage=DASHBOARDS_LABEL+"Tipo de Elementos de Seguridad"
+     # Generate Graphs
+     try:
+          URL_ROOT=os.path.join(current_app.root_path)
+          get_graph_seguridad(URL_ROOT)
+     except Exception as e:
+          print(f'ERROR GRAPH - Error generating and saving the severity graphs {e}')
      # Get the data for the graphs of the dashboard
      graficos, warningDescription = get_dashboard_seguridad_data()
      return render_template("dashboard.html", warningDescription=warningDescription, graficos=graficos, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)

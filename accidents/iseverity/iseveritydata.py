@@ -3,15 +3,15 @@ def get_dashboard_seguridad_data():
     graficos ={
           'Imagen 1': {
                'title_image': 'Cantidad Personas Involucradas en siniestros viales por uso de casco.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'CantPersonaUsoCasco.png'
           },
           'Imagen 2': {
                'title_image': 'Cantidad Personas Involucradas en siniestros viales por uso de chaleco.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'CantPersonaUsoChaleco.png'
           },
           'Imagen 3': {
                'title_image': 'Cantidad Personas Involucradas en siniestros viales por uso de cinturón.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'CantPersonaUsoCinturon.png'
           },
      }
     warningDescription = 'En este tablero se podra observar todos los graficos y resultados generados a traves del producto de datos en de los siniestros viales por localidades.(Para observar los graficos de mejor manera dar click en el grafico)'

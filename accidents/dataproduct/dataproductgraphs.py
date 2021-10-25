@@ -199,5 +199,94 @@ def get_graph_gravedad(url):
     plt.plot(gphrg4['HORA_PROCESADA'], gphrg4['CANTIDAD'], color='#16A085', marker = 'o', markerfacecolor = '#16A085')
     plt.grid()
     #-plt.show()
-    plt.close()
     plt.savefig(URL_IMG_STORE+'SiniGravedadByHoraMuertos')
+    plt.close()
+
+def get_graph_seguridad(url):
+    # Initialize urls
+    URL_PREPARED_DATA = url + URL_PREPARED_DATA_BASIC
+    URL_IMG_STORE = url + URL_IMG_STORE_BASIC
+
+    # Extract data from csv file
+    dfsiniestros = pd.read_csv(URL_PREPARED_DATA+'/'+FILE_NAME)
+   
+    # Convert datatypes of object to datetime or str
+    dfsiniestros['FECHA'] = dfsiniestros['FECHA'].astype('datetime64[ns]')
+    dfsiniestros['DIRECCION'] = dfsiniestros['DIRECCION'].astype('str')
+
+    ################################################################################################################################################
+    ################################################## Genera la imagen: CantPersonaUsoCasco.png ###################################################
+    ################################################################################################################################################
+
+    # Analisis uso de elementos de seguridad
+    # Uso de Casco
+
+    # Cantidad de Personas por uso de casco
+    gpedadlca = dfsiniestros.groupby(['LLEVACASCO','EDAD_PROCESADA'])['EDAD_PROCESADA'].count().reset_index(name='CANTIDAD')
+    gpelca0 = gpedadlca[gpedadlca['LLEVACASCO']== 0]
+    gpelca1 = gpedadlca[gpedadlca['LLEVACASCO']== 1]
+    gpelca2 = gpedadlca[gpedadlca['LLEVACASCO']== 2]
+
+    plt.figure(figsize=(15,4))
+    plt.plot(gpelca1['EDAD_PROCESADA'],gpelca1['CANTIDAD'], 'ro')
+    plt.plot(gpelca2['EDAD_PROCESADA'],gpelca2['CANTIDAD'], 'bo', alpha=0.7)
+    #plt.plot(gpedadcha0['EDAD_PROCESADA'],gpedadcha0['CANTIDAD'], 'go', alpha=0.7)
+    #plt.xticks(rotation=35)
+    plt.legend(['USA CASCO','NO USA CASCO'])
+    plt.xlabel('Edades.')
+    plt.ylabel('Cantidad de Personas.')
+    plt.title('Cantidad de Personas que Usan Casco por Edad.')
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantPersonaUsoCasco')
+    plt.close()
+
+    ################################################################################################################################################
+    ################################################## Genera la imagen: CantPersonaUsoChaleco.png ###################################################
+    ################################################################################################################################################
+
+    # Uso de chaleco
+    # Cantidad de Personas por uso de chaleco
+    gpedad = dfsiniestros.groupby(['LLEVACHALECO','EDAD_PROCESADA'])['EDAD_PROCESADA'].count().reset_index(name='CANTIDAD')
+    gpedadcha0 = gpedad[gpedad['LLEVACHALECO']== 0]
+    gpedadcha1 = gpedad[gpedad['LLEVACHALECO']== 1]
+    gpedadcha2 = gpedad[gpedad['LLEVACHALECO']== 2]
+
+    plt.figure(figsize=(15,4))
+    plt.plot(gpedadcha1['EDAD_PROCESADA'],gpedadcha1['CANTIDAD'], 'ro')
+    plt.plot(gpedadcha2['EDAD_PROCESADA'],gpedadcha2['CANTIDAD'], 'bo', alpha=0.7)
+    #plt.plot(gpedadcha0['EDAD_PROCESADA'],gpedadcha0['CANTIDAD'], 'go', alpha=0.7)
+    #plt.xticks(rotation=35)
+    plt.legend(['USA CHALECO','NO USA CHALECO'])
+    plt.xlabel('Edades.')
+    plt.ylabel('Cantidad de Personas')
+    plt.title('Cantidad de Personas que Usan Chaleco por Edad.')
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantPersonaUsoChaleco')
+    plt.close()
+
+    ################################################################################################################################################
+    ################################################## Genera la imagen: CantPersonaUsoCinturon.png ###################################################
+    ################################################################################################################################################
+
+    # Uso cinturón
+    # Cantidad de Personas por uso de chaleco
+    gpedad = dfsiniestros.groupby(['LLEVACINTURON','EDAD_PROCESADA'])['EDAD_PROCESADA'].count().reset_index(name='CANTIDAD')
+    gpelc0 = gpedad[gpedad['LLEVACINTURON']== 0]
+    gpelc1 = gpedad[gpedad['LLEVACINTURON']== 1]
+    gpelc2 = gpedad[gpedad['LLEVACINTURON']== 2]
+
+    plt.figure(figsize=(15,4))
+    plt.plot(gpelc1['EDAD_PROCESADA'],gpelc1['CANTIDAD'], 'ro')
+    plt.plot(gpelc2['EDAD_PROCESADA'],gpelc2['CANTIDAD'], 'bo', alpha=0.7)
+    #plt.plot(gpedadcha0['EDAD_PROCESADA'],gpedadcha0['CANTIDAD'], 'go', alpha=0.7)
+    #plt.xticks(rotation=35)
+    plt.legend(['USA CINTURÓN','NO USA CINTURÓN'])
+    plt.xlabel('Edades')
+    plt.ylabel('Cantidad de Personas')
+    plt.title('Cantidad de Personas que Usan Cinturón por Edad.')
+    plt.grid()
+    #-plt.show()
+    plt.savefig(URL_IMG_STORE+'CantPersonaUsoCinturon')
+    plt.close()
