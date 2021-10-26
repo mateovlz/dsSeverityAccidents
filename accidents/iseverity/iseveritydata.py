@@ -1,4 +1,5 @@
 from .iseveitydb import get_db
+from .isverityutils import get_now_date
 def get_dashboard_seguridad_data():
     graficos ={
           'Imagen 1': {
@@ -176,21 +177,21 @@ def set_all_data(dataTable, columns, values, object):
            print(f'ERROR - INSERT REFUSED {e}')
 
 def set_history_log(name, predictionResult, browser):
-     createTimestamp='24/10/2021'
+     createTimestamp=get_now_date()
      columns = 'NAME, PREDICTION_RESULT, BROWSER, CREATED_TIMESTAMP, IS_ACTIVE'
      values = '?,?,?,?,?'
      newLog = [name, predictionResult, browser, createTimestamp, 1]
      set_all_data('history_used_log',columns, values, newLog)
 
-def set_source_log(nameFile, typeFile, state):
-     createTimestamp='24/10/2021'
-     columns = 'NAME_FILE, TYPE_FILE, STATE, CREATED_TIMESTAMP, IS_ACTIVE'
-     values = '?,?,?,?,?'
-     newLog = [nameFile, typeFile, state, createTimestamp, 1]
+def set_source_log(name, nameFile, typeFile, state):
+     createTimestamp=get_now_date()
+     columns = 'NAME, NAME_FILE, TYPE_FILE, STATE, CREATED_TIMESTAMP, IS_ACTIVE'
+     values = '?,?,?,?,?,?'
+     newLog = [name, nameFile, typeFile, state, createTimestamp, 1]
      set_all_data('sources_log',columns, values, newLog)
 
 def set_execution_log(name, state):
-     createTimestamp='24/10/2021'
+     createTimestamp=get_now_date()
      columns = 'NAME, STATE, CREATED_TIMESTAMP, IS_ACTIVE'
      values = '?,?,?,?'
      newLog = [name , state, createTimestamp, 1]

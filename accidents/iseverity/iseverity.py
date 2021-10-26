@@ -12,6 +12,7 @@ from ..dataproduct.dataproductgraphs import (
 )
 from .isverityutils import send_email
 from ..dataproduct.dataproductml import get_prediction
+from .isverityutils import get_now_date_format
 import os
 
 iseverityBp = Blueprint(
@@ -112,7 +113,7 @@ def dashboard_gravedad():
           try:
                # Get absolute path to use model pickle file
                URL_ROOT=os.path.join(current_app.root_path)
-               resultMl = get_prediction(vars,'clf', URL_ROOT + '/dataproduct/ml/') if edadprocesada else None
+               resultMl = get_prediction(vars,'dt', URL_ROOT + '/dataproduct/ml/') if edadprocesada else None
                severits = {
                     1: 'Ilesos',
                     2: 'Herido Valorado',
@@ -201,12 +202,12 @@ def conf_admin_fuentes():
           nombre = request.form['nombre']
           fuente = request.files['fuente']
           try:
-               fuente.save(os.path.join(current_app.config['UPLOAD_FOLDER'], fuente.filename))
+               fuente.save(os.path.join(current_app.config['UPLOAD_FOLDER'], get_now_date_format()+'_'+fuente.filename))
                print('FILE UPLOADED SUCCESSFULLY')
           except Exception as e:
                print(f'ERROR FILE - Error uploading or saving the file {e}')
           fileExtension = fuente.filename.split('.')[1]
-          set_source_log(nombre, fileExtension, 'Cargado')
+          set_source_log(nombre, fuente.filename, fileExtension, 'Cargado')
           data=get_all_sources_audit_log()
           if data == 'ERROR - Data Not Found':
                dataTable=False

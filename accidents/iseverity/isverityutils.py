@@ -2,6 +2,7 @@
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib
+from datetime import datetime
 
 #This method send a email passing a subject, message and client emails
 def send_email(subject, message, client):
@@ -28,3 +29,9 @@ def send_email(subject, message, client):
         print("EMAIL SUCCESSFULLY")
     except Exception as e:
         print(f'EMAIL ERROR - Unable to send an email {e}')
+
+def get_now_date_format():
+    return datetime.now().strftime("%Y%m%d%H%M%S")
+
+def get_now_date():
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
