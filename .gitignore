@@ -35,4 +35,4 @@ build/
 *.egg-info/
 
 # Remove temporaly the ml directory for source version control system
-accidents/dataproduct/ml
+accidents/dataproduct/ml/model_clf.pickle

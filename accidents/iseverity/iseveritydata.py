@@ -57,7 +57,7 @@ def get_dashboard_localidades_data():
           },
           'Imagen 2': {
                'title_image': 'Mapa de calor de la ciudad de Bogota de la cantidad de siniestros viales por localidd.',
-               'name_image': 'AgeByPeople.png'
+               'name_image': 'MapaCalorLocalidad.jpeg'
           },
      }
     warningDescription = 'En este tablero se podra observar todos los graficos y resultados generados a traves del producto de datos en de los siniestros viales por localidades.(Para observar los graficos de mejor manera dar click en el grafico)'
@@ -163,6 +163,21 @@ def get_all_execution_audit_log():
 def get_all_sources_audit_log():
      return get_all_data('sources_log')
 
+def get_all_raw_data():
+     db = get_db()
+     result = None
+     data = db.execute(
+          '''SELECT name_file_prepared
+             FROM sources_log
+             WHERE is_active = 1'''
+     ).fetchall()
+
+     if data is None:
+          result = "ERROR - Data Not Found"
+     else:
+          result = data
+     return result
+
 def set_all_data(dataTable, columns, values, object):
      try:
          db = get_db()
@@ -183,11 +198,11 @@ def set_history_log(name, predictionResult, browser):
      newLog = [name, predictionResult, browser, createTimestamp, 1]
      set_all_data('history_used_log',columns, values, newLog)
 
-def set_source_log(name, nameFile, typeFile, state):
+def set_source_log(name, nameFile, typeFile, state, nameFilePrepared):
      createTimestamp=get_now_date()
-     columns = 'NAME, NAME_FILE, TYPE_FILE, STATE, CREATED_TIMESTAMP, IS_ACTIVE'
-     values = '?,?,?,?,?,?'
-     newLog = [name, nameFile, typeFile, state, createTimestamp, 1]
+     columns = 'NAME, NAME_FILE, TYPE_FILE, STATE, CREATED_TIMESTAMP, IS_ACTIVE, NAME_FILE_PREPARED'
+     values = '?,?,?,?,?,?,?'
+     newLog = [name, nameFile, typeFile, state, createTimestamp, 1, nameFilePrepared]
      set_all_data('sources_log',columns, values, newLog)
 
 def set_execution_log(name, state):

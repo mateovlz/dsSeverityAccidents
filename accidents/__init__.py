@@ -15,7 +15,10 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE= app.root_path + '/database/ISeverity.db',
-        UPLOAD_FOLDER = app.root_path + '/dataproduct/ml/newfiles',
+        UPLOAD_FOLDER = app.root_path + '/dataproduct/rawdata',
+        PREPARED_DATA = app.root_path + '/dataproduct/prepareddata',
+        TRAINNING_DATA = app.root_path + '/dataproduct/trainningdata',
+        ML_ROOT = app.root_path + '/dataproduct/ml',
     )
 
     if test_config is None:
