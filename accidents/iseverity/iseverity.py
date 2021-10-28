@@ -4,15 +4,18 @@ from flask import (
 from .iseveritydata import (
      get_dashboard_seguridad_data, get_dashboard_gravedad_data, get_dashboard_localidades_data, get_dashboard_tipo_horario_data, 
      get_dashboard_tipo_vehiculo_data, get_dashboard_responsabilidad_data, get_contacto_message, get_all_history_audit_log,
-     get_all_execution_audit_log, get_all_sources_audit_log, set_source_log, set_execution_log, set_history_log
+     get_all_execution_audit_log, get_all_sources_audit_log, set_source_log, set_execution_log, set_history_log, get_all_raw_data
 )
 from ..dataproduct.dataproductgraphs import (
      get_graph_gravedad, get_graph_seguridad, get_graph_localidades, get_graph_tipo_horario, get_graph_tipo_vehiculo,
      get_graph_tipo_responsabilidad
 )
-from .isverityutils import send_email
+from .isverityutils import send_email, data_engine, data_prepared
 from ..dataproduct.dataproductml import get_prediction
+from .isverityutils import get_now_date_format
 import os
+import threading
+import time
 
 iseverityBp = Blueprint(
     'iseverity', __name__, url_prefix='/ISeverity', template_folder='../web/templates/iseverity',
@@ -112,7 +115,7 @@ def dashboard_gravedad():
           try:
                # Get absolute path to use model pickle file
                URL_ROOT=os.path.join(current_app.root_path)
-               resultMl = get_prediction(vars,'clf', URL_ROOT + '/dataproduct/ml/') if edadprocesada else None
+               resultMl = get_prediction(vars,'dt', URL_ROOT + '/dataproduct/ml/') if edadprocesada else None
                severits = {
                     1: 'Ilesos',
                     2: 'Herido Valorado',
@@ -200,18 +203,33 @@ def conf_admin_fuentes():
      if request.method == 'POST':
           nombre = request.form['nombre']
           fuente = request.files['fuente']
+          filename = get_now_date_format()+'_'+fuente.filename.split('.')[0]
+          fileExtension = fuente.filename.split('.')[1]
           try:
-               fuente.save(os.path.join(current_app.config['UPLOAD_FOLDER'], fuente.filename))
+               fuente.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename+'.'+fileExtension))
                print('FILE UPLOADED SUCCESSFULLY')
           except Exception as e:
                print(f'ERROR FILE - Error uploading or saving the file {e}')
-          fileExtension = fuente.filename.split('.')[1]
-          set_source_log(nombre, fileExtension, 'Cargado')
+          filenameUp = filename+'sin-prepared.csv'
+          set_source_log(nombre, filename+'.'+fileExtension, fileExtension, 'Activo', filenameUp)
           data=get_all_sources_audit_log()
           if data == 'ERROR - Data Not Found':
                dataTable=False
           else:
                dataTable=data
+          # Variable required for data treatment and trained     
+          url_raw_data = current_app.config['UPLOAD_FOLDER'] + "/"
+          url_prepared_data = current_app.config['PREPARED_DATA'] +"/"
+          url_trainning_data = current_app.config['TRAINNING_DATA'] +"/"
+          url_ml_root = current_app.config['ML_ROOT'] +"/"
+          
+          filesName = list()
+          filesName1 = get_all_raw_data()
+          for column in range(len(filesName1)):
+               filesName.append(filesName1[column][0])
+          
+          threading.Thread(target=data_engine, args=(filename+'.'+fileExtension,filesName,url_raw_data,url_prepared_data,url_trainning_data,url_ml_root,)).start()
+
           return render_template("fuentes.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
      data=get_all_sources_audit_log()
      if data == 'ERROR - Data Not Found':
@@ -229,12 +247,26 @@ def conf_admin_ejecucion_procesos():
      dataTable=None
      if request.method == 'POST':
           nombre = request.form['nombre']
-          set_execution_log(nombre,'Ejecucion')
+          set_execution_log(nombre,'Finalizado')
           data=get_all_execution_audit_log()
           if data == 'ERROR - Data Not Found':
                dataTable=False
           else:
                dataTable=data
+
+          # Variable required for data treatment and trained     
+          url_raw_data = current_app.config['UPLOAD_FOLDER'] + "/"
+          url_prepared_data = current_app.config['PREPARED_DATA'] +"/"
+          url_trainning_data = current_app.config['TRAINNING_DATA'] +"/"
+          url_ml_root = current_app.config['ML_ROOT'] +"/"
+          
+          filesName = list()
+          filesName1 = get_all_raw_data()
+          for column in range(len(filesName1)):
+               filesName.append(filesName1[column][0])
+          
+          threading.Thread(target=data_prepared, args=(url_prepared_data,url_trainning_data,filesName,url_ml_root,)).start()
+
           return render_template("procesos.html", dataTable=dataTable, linkInicio=linkInicio, titleHead=titleHead, titlePage=titlePage, footer=footer)
      data=get_all_execution_audit_log()
      if data == 'ERROR - Data Not Found':
